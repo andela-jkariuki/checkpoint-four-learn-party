@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace LearnParty\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
