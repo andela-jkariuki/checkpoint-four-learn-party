@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace LearnParty\Http\Controllers\Auth;
 
-use App\User;
+use LearnParty\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use LearnParty\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Socialite;
+use LearnParty\Http\Repositories\UserRepository;
 
 class AuthController extends Controller
 {
@@ -30,14 +32,17 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/';
 
+    protected $userRepository;
+
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UserRepository $userRepository)
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -68,5 +73,28 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * Redirect the user to the authentication service.
+     *
+     * @return Response
+     */
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+
+    /**
+     * Obtain the user information from authentication service.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback($provider)
+    {
+        $user = Socialite::driver($provider)->user();
+        $authUser = $this->userRepository->authenticateUser($user, $provider);
+
+        dd($authUser);
     }
 }
