@@ -2,13 +2,14 @@
 
 namespace LearnParty\Http\Controllers\Auth;
 
-use LearnParty\User;
 use Validator;
 use LearnParty\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Socialite;
 use LearnParty\Http\Repositories\UserRepository;
+use LearnParty\User;
+use Socialite;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -55,6 +56,7 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
+            'username' => 'required|max:255|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -70,8 +72,11 @@ class AuthController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'provider_id' => 'traditional',
+            'provider' => 'traditional',
         ]);
     }
 
@@ -93,8 +98,8 @@ class AuthController extends Controller
     public function handleProviderCallback($provider)
     {
         $user = Socialite::driver($provider)->user();
-        $authUser = $this->userRepository->authenticateUser($user, $provider);
+        Auth::login($this->userRepository->authenticateUser($user, $provider), true);
 
-        dd($authUser);
+        return redirect($this->redirectTo);
     }
 }
