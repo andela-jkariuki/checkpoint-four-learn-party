@@ -16,16 +16,20 @@ class UserRepository
      */
     public function authenticateUser($user, $provider)
     {
-        $userData = [
-            'name' => $user->name,
-            'username' => $user->nickname,
-            'email' => $user->email,
-            'avatar' => $provider === 'github' ? $user->avatar : $user->avatar_original,
-            'provider_id' => $user->id,
-            'provider' => $provider,
-            'about' => $provider === 'twitter' ? $user->user['description'] : '',
-        ];
+        if (User::where('provider_id', $user->id)->count() === 0) {
+             $userData = [
+                'name' => $user->name,
+                'username' => $user->nickname,
+                'email' => $user->email,
+                'avatar' => $provider === 'github' ? $user->avatar : $user->avatar_original,
+                'provider_id' => $user->id,
+                'provider' => $provider,
+                'about' => $provider === 'twitter' ? $user->user['description'] : '',
+            ];
 
-        return $authUser = User::firstOrCreate($userData);
+            User::create($userData);
+        }
+       
+        return User::where('provider_id', $user->id)->first();
     }
 }

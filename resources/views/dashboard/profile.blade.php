@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-3 card">
         <ul class="list-group">
-            <li class="list-group-item">
+            <li class="list-group-item active">
                 <a href="#">
                     {{ Auth::user()->name }}'{{ substr(Auth::user()->name, -1) == 's' ? '' : 's' }} profile
                 </a>
@@ -19,7 +19,7 @@
     </div>
     <div class="col-md-5 col-md-offsets-1">
         <h2>Update Profile</h2>
-        {!! Form::model(Auth::user(), ['url' => 'register', 'method' => 'POST', 'class' => 'form']) !!}
+        {!! Form::model(Auth::user(), ['url' => 'profile/edit', 'method' => 'PUT', 'class' => 'form']) !!}
 
             <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                 {!! Form::label('username', 'Username') !!}

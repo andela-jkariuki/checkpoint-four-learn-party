@@ -28,6 +28,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('profile', 'UserController@profile');
 
+    Route::put('profile/edit', 'UserController@update');
+
     /**
      * redirect to social auth login using socialite
      */
