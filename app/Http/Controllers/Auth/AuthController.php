@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace LearnParty\Http\Controllers\Auth;
 
-use App\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use LearnParty\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use LearnParty\Http\Repositories\UserRepository;
+use LearnParty\User;
+use Socialite;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -30,14 +33,17 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/';
 
+    protected $userRepository;
+
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UserRepository $userRepository)
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -50,6 +56,7 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
+            'username' => 'required|max:255|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -65,8 +72,34 @@ class AuthController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'provider_id' => 'traditional',
+            'provider' => 'traditional',
         ]);
+    }
+
+    /**
+     * Redirect the user to the authentication service.
+     *
+     * @return Response
+     */
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+
+    /**
+     * Obtain the user information from authentication service.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback($provider)
+    {
+        $user = Socialite::driver($provider)->user();
+        Auth::login($this->userRepository->authenticateUser($user, $provider), true);
+
+        return redirect($this->redirectTo);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace LearnParty;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -12,7 +12,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'username',
+        'avatar',
+        'provider_id',
+        'provider',
+        'password',
     ];
 
     /**
