@@ -26,7 +26,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/', 'HomeController@index');
 
-        /**
+    Route::get('profile', 'UserController@profile');
+
+    /**
      * redirect to social auth login using socialite
      */
     Route::get('/auth/{provider}', 'Auth\AuthController@redirectToProvider');

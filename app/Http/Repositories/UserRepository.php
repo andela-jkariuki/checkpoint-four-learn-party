@@ -20,9 +20,10 @@ class UserRepository
             'name' => $user->name,
             'username' => $user->nickname,
             'email' => $user->email,
-            'avatar' => $user->avatar,
+            'avatar' => $provider === 'github' ? $user->avatar : $user->avatar_original,
             'provider_id' => $user->id,
-            'provider' => $provider
+            'provider' => $provider,
+            'about' => $provider === 'twitter' ? $user->user['description'] : '',
         ];
 
         return $authUser = User::firstOrCreate($userData);
