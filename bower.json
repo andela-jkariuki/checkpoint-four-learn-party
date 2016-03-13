@@ -1,0 +1,27 @@
+{
+  "name": "learn-party",
+  "description": "A learning management system",
+  "main": "",
+  "authors": [
+    "John Kariuki <john.kariuki@andela.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "learn",
+    "party",
+    "lms",
+    "tia",
+    "laravel"
+  ],
+  "homepage": "https://github.com/andela-jkariuki/checkpoint-four-learn-party",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

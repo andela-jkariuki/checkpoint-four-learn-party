@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{URl::asset('bower/bootstrap-social/bootstrap-social.css') }}" rel="stylesheet">
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
 
     <style>
