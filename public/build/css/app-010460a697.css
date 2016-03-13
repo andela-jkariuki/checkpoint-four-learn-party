@@ -1,6 +1,13 @@
 .navbar {
   border-radius: 0px; }
 
+.navbar-nav li a {
+  line-height: 3em;
+  padding: 5px 10px; }
+
+#user-avatar a img {
+  height: 50px; }
+
 .card {
   background-color: #fff;
   /* just in case there no content*/
