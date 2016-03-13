@@ -77,6 +77,7 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
             'provider_id' => 'traditional',
             'provider' => 'traditional',
+            'avatar' => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200',
         ]);
     }
 
