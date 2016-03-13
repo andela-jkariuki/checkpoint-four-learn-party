@@ -10,11 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -29,7 +24,7 @@ Route::get('/', function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/home', 'HomeController@index');
+    Route::get('/', 'HomeController@index');
 
         /**
      * redirect to social auth login using socialite

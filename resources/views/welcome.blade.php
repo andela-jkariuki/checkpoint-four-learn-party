@@ -8,7 +8,11 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
-                    Your Application's Landing Page.
+                    @if( Auth::guest())
+                        Your Application's Landing Page.
+                    @elseif(Auth::user())
+                        You are logged in as {{Auth::user()->name}}
+                    @endif
                 </div>
             </div>
         </div>
