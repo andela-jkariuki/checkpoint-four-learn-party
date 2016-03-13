@@ -3,13 +3,25 @@
 .navbar {
     border-radius: 0px;
 }
+.card{
+    background-color: #fff;
+    /* just in case there no content*/
+    padding: 25px;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+}
 
-  .login-or {
+  .auth-or {
     position: relative;
     font-size: 18px;
     color: #aaa;
     margin-top: 10px;
-            margin-bottom: 10px;
+    margin-bottom: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
   }
@@ -31,5 +43,5 @@
   }
 
   .btn-social>:first-child {
-    line-height:50px;
+    line-height:43px;
   }
