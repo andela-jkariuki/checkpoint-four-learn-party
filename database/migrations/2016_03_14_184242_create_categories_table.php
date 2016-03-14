@@ -17,6 +17,20 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+        Schema::create('category_video', function (Blueprint $table) {
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')
+                  ->references('id')
+                  ->on('categories');
+
+            $table->integer('video_id')->unsigned();
+            $table->foreign('video_id')
+                  ->references('id')
+                  ->on('videos');
+
+            $table->timestamps();
+        });
     }
 
     /**
@@ -26,6 +40,12 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
+        Schema::table('category_video', function ($table) {
+            $table->dropForeign(['category_id']);
+            $table->dropForeign(['video_id']);
+        });
+
+        Schema::drop('category_video');
         Schema::drop('categories');
     }
 }
