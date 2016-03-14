@@ -19,6 +19,9 @@
     </div>
     <div class="col-md-5 col-md-offsets-1">
         <h2>Update Profile</h2>
+
+        @include('errors.feedback')
+
         {!! Form::model(Auth::user(), ['url' => 'profile/edit', 'method' => 'PUT', 'class' => 'form']) !!}
 
             <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">

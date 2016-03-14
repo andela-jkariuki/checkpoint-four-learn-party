@@ -25,11 +25,11 @@ class UserRepository
                 'provider_id' => $user->id,
                 'provider' => $provider,
                 'about' => $provider === 'twitter' ? $user->user['description'] : '',
-            ];
+             ];
 
-            User::create($userData);
+             User::create($userData);
         }
-       
+
         return User::where('provider_id', $user->id)->first();
     }
 }
