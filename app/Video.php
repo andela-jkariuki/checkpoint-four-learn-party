@@ -13,8 +13,23 @@ class Video extends Model
         'user_id',
     ];
 
+    /**
+     * A video belongs to one user.
+     *
+     * @return Object
+     */
     public function user()
     {
         return $this->belongsTo('LearnParty\User');
+    }
+
+    /**
+     * A video belongs to many categories
+     *
+     * @return Object.
+     */
+    public function categories()
+    {
+        return $this->belongsToMany('LearnParty\Category');
     }
 }
