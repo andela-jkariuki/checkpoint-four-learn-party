@@ -24,11 +24,25 @@
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
+    /**
+     * Learn party root
+     */
     Route::get('/', 'HomeController@index');
 
+    /**
+     * Get authenitcated user's profile page
+     */
     Route::get('profile', 'UserController@profile');
 
+    /**
+     * Update an authenticated user's profile page
+     */
     Route::put('profile/edit', 'UserController@update');
+
+    /**
+     * Update an authenticated user's avatar
+     */
+    Route::patch('profile/edit/avatar', 'UserController@updateAvatar');
 
     /**
      * redirect to social auth login using socialite

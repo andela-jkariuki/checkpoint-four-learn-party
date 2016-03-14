@@ -75,9 +75,33 @@
     <div class="col-md-4">
         <h2>Profile Picture</h2>
         <img src="{{ Auth::user()->avatar }}" style="width:250px;height:250px">
-        {!! Form::model(Auth::user(), ['url' => 'register', 'method' => 'POST', 'class' => 'form']) !!}
-        {!! Form::file('image') !!}
+        {!! Form::model(Auth::user(), ['url' => '/profile/edit/avatar', 'method' => 'PATCH', 'class' => 'form uploadAvatar', 'files' => true]) !!}
+        {!! Form::file('avatar', [
+                'id' => 'avatar',
+                'style' => 'display:none',
+                'data-url' => '/profile/edit/avatar'
+            ])
+        !!}
         {!! Form::close() !!}
+        <a href="#" id="uploadAvatar" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Upload Avatar</a>
     </div>
 </div>
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function()
+        {
+            $('#uploadAvatar').on('click', function (event)
+            {
+                event.preventDefault();
+                $('#avatar').click();
+            });
+
+           $('#avatar').on("change", function ()
+            {
+                $('.uploadAvatar').submit();
+            });
+        });
+    </script>
 @endsection

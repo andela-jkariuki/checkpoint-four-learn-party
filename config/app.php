@@ -157,6 +157,8 @@ return [
         LearnParty\Providers\RouteServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Aws\Laravel\AwsServiceProvider::class,
+        JD\Cloudder\CloudderServiceProvider::class,
     ],
 
     /*
@@ -205,6 +207,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'AWS' => Aws\Laravel\AwsFacade::class,
+        'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
     ],
-
 ];

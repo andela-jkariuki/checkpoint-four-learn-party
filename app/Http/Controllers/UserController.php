@@ -6,9 +6,15 @@ use Illuminate\Http\Request;
 use LearnParty\Http\Requests;
 use LearnParty\User;
 use Auth;
+use LearnParty\Http\Repositories\UserRepository;
 
 class UserController extends Controller
 {
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     /**
      * Return the user's profile page
      *
@@ -39,6 +45,27 @@ class UserController extends Controller
 
         $request->session()->flash('status', 'success');
         $request->session()->flash('message', 'Profile successfully updated.');
+
+        return redirect('profile');
+    }
+
+    public function updateAvatar(Request $request)
+    {
+        if ($request->file('avatar')->isValid()) {
+            $url = $this->userRepository->uploadAvatar($request);
+
+            if (filter_var($url, FILTER_VALIDATE_URL) && $this->userRepository->updateUserInfo(['avatar' => $url])) {
+                $request->session()->flash('status', 'success');
+                $request->session()->flash('message', 'Avatar successfully updated.');
+            } else {
+                $request->session()->flash('status', 'error');
+                $request->session()->flash('message', 'Error Uploading avatar.');
+            }
+
+        } else {
+            $request->session()->flash('status', 'error');
+            $request->session()->flash('message', 'Invalid file upload');
+        }
 
         return redirect('profile');
     }

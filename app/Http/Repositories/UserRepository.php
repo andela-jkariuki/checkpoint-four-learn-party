@@ -2,7 +2,11 @@
 
 namespace LearnParty\Http\Repositories;
 
+use Illuminate\Contracts\Filesystem\Filesystem;
 use LearnParty\User;
+use Storage;
+use Auth;
+use Cloudder;
 
 class UserRepository
 {
@@ -31,5 +35,34 @@ class UserRepository
         }
 
         return User::where('provider_id', $user->id)->first();
+    }
+
+    /**
+     * upload an avatar to cloudinary and return url
+     *
+     * @param  Request $request Request from user
+     * @return string           Cloudinary Url
+     */
+    public function uploadAvatar($request)
+    {
+        $avatar = $request->file('avatar');
+        $avatar = Cloudder::upload($avatar, null, [
+            "format" => "jpg",
+            "crop" => "fill",
+            "width" => 250,
+            "height" => 250]);
+
+        return  Cloudder::getResult()['url'];
+    }
+
+    /**
+     * Update user info
+     *
+     * @param  array  $data Data to update
+     * @return boolean       True or false
+     */
+    public function updateUserInfo(array $data)
+    {
+        return User::find(Auth::user()->id)->update($data);
     }
 }
