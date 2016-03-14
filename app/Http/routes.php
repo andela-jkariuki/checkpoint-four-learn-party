@@ -10,11 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -29,9 +24,27 @@ Route::get('/', function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/home', 'HomeController@index');
+    /**
+     * Learn party root
+     */
+    Route::get('/', 'HomeController@index');
 
-        /**
+    /**
+     * Get authenitcated user's profile page
+     */
+    Route::get('profile', 'UserController@profile');
+
+    /**
+     * Update an authenticated user's profile page
+     */
+    Route::put('profile/edit', 'UserController@update');
+
+    /**
+     * Update an authenticated user's avatar
+     */
+    Route::patch('profile/edit/avatar', 'UserController@updateAvatar');
+
+    /**
      * redirect to social auth login using socialite
      */
     Route::get('/auth/{provider}', 'Auth\AuthController@redirectToProvider');

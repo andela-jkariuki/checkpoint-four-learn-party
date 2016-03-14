@@ -1,2 +1,54 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+.navbar {
+    border-radius: 0px;
+}
+.navbar-nav li a {
+    line-height:3em;
+    padding:5px 10px;
+}
+#user-avatar a img {
+  height:50px;
+}
+.card{
+    background-color: #fff;
+    /* just in case there no content*/
+    padding: 20px;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+  .auth-or {
+    position: relative;
+    font-size: 18px;
+    color: #aaa;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .span-or {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: -2px;
+    margin-left: -25px;
+    background-color: #fff;
+    width: 50px;
+    text-align: center;
+  }
+  .hr-or {
+    background-color: #cdcdcd;
+    height: 1px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+
+  .btn-social>:first-child {
+    line-height:43px;
+  }
