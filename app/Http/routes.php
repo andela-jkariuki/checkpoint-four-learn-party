@@ -45,6 +45,26 @@ Route::group(['middleware' => 'web'], function () {
     Route::patch('profile/edit/avatar', 'UserController@updateAvatar');
 
     /**
+     * Show the new video page
+     */
+    Route::get('dashboard/create', 'dashboardController@create');
+
+    /**
+     * Create new video post
+     */
+    Route::post('dashboard/create', 'dashboardController@store');
+
+    /**
+     * Get the edit page for a single episode
+     */
+    Route::get('dashboard/{id}/edit', 'dashboardController@edit');
+
+    /**
+     * Update an exisiting article details
+     */
+    Route::patch('dashboard/{id}', 'dashboardController@update');
+
+    /**
      * redirect to social auth login using socialite
      */
     Route::get('/auth/{provider}', 'Auth\AuthController@redirectToProvider');
