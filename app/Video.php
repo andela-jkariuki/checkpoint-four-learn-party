@@ -24,6 +24,18 @@ class Video extends Model
     }
 
     /**
+     * Get a list of categories associated with
+     * this video
+     *
+     * @param  [type] $value [description]
+     * @return array        Associated categories
+     */
+    public function getCategoryListAttribute()
+    {
+        return $this->categories()->lists('id')->toArray();
+    }
+
+    /**
      * A video belongs to many categories
      *
      * @return Object.
