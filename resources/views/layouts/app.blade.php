@@ -54,7 +54,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i> Profile</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="{{ url('/dashboard') }}"><i class="fa fa-btn fa-dashboard"></i> Dashboard</a></li>
+                                <li><a href="{{ url('/dashboard/create') }}"><i class="fa fa-btn fa-dashboard"></i> Dashboard</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-power-off"></i> Logout</a></li>
                             </ul>
