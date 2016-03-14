@@ -26,7 +26,7 @@ class VideoRequest extends Request
         return [
             'title' => 'required|min:5|max:255',
             'url' => 'required|url|active_url|youtube_url',
-            'category' => 'required',
+            'category_list' => 'required',
             'description' => 'required|min:5|max:255',
         ];
     }

@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
     <link href="{{URl::asset('bower/bootstrap-social/bootstrap-social.css') }}" rel="stylesheet">
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
 </head>
@@ -70,6 +71,7 @@
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
 
     @yield('js')
 

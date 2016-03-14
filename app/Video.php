@@ -30,6 +30,6 @@ class Video extends Model
      */
     public function categories()
     {
-        return $this->belongsToMany('LearnParty\Category');
+        return $this->belongsToMany('LearnParty\Category')->withTimestamps();
     }
 }
