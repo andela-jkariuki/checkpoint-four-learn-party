@@ -5,7 +5,7 @@
     <div class="col-md-3 card">
         <ul class="list-group">
             <li class="list-group-item active">
-                <a href="#">
+                <a href="{{ url('/profile') }}">
                     {{ Auth::user()->name }}'{{ substr(Auth::user()->name, -1) == 's' ? '' : 's' }} profile
                 </a>
             </li>
@@ -76,12 +76,20 @@
         <h2>Profile Picture</h2>
         <img src="{{ Auth::user()->avatar }}" style="width:250px;height:250px">
         {!! Form::model(Auth::user(), ['url' => '/profile/edit/avatar', 'method' => 'PATCH', 'class' => 'form uploadAvatar', 'files' => true]) !!}
-        {!! Form::file('avatar', [
-                'id' => 'avatar',
-                'style' => 'display:none',
-                'data-url' => '/profile/edit/avatar'
-            ])
-        !!}
+
+         <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
+            {!! Form::file('avatar', [
+                    'id' => 'avatar',
+                    'style' => 'display:none',
+                    'data-url' => '/profile/edit/avatar'
+                ])
+            !!}
+            @if ($errors->has('avatar'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('avatar') }}</strong>
+                </span>
+            @endif
+        </div>
         {!! Form::close() !!}
         <a href="#" id="uploadAvatar" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Upload Avatar</a>
     </div>
@@ -95,6 +103,11 @@
             $('#uploadAvatar').on('click', function (event)
             {
                 event.preventDefault();
+                $(this)
+                .removeClass('btn-success')
+                .addClass('btn-default')
+                .html('<i class="fa fa-spinner fa-spin"></i> Uploading avatar... ')
+
                 $('#avatar').click();
             });
 

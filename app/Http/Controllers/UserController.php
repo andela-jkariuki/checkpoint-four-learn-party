@@ -49,8 +49,18 @@ class UserController extends Controller
         return redirect('profile');
     }
 
+    /**
+     * upload an avatar to cloudinary and return url
+     *
+     * @param  Request $request Request from user
+     * @return Object           redirect to profile page
+     */
     public function updateAvatar(Request $request)
     {
+        $this->validate($request, [
+            'avatar' => 'required|image',
+        ]);
+
         if ($request->file('avatar')->isValid()) {
             $url = $this->userRepository->uploadAvatar($request);
 
