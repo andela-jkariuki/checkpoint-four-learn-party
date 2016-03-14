@@ -14,8 +14,13 @@
 $factory->define(LearnParty\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
-        'email' => $faker->safeEmail,
-        'password' => bcrypt(str_random(10)),
+        'username' => $faker->userName
+        'email' => $faker->email,
+        'avatar' => 'http://res.cloudinary.com/johnkariuki/image/upload/v1457982393/y9doba4mv488u7s4pzfx.jpg'
+        'provider_id' => 'traditional',
+        'provder' => 'traditional',
+        'about' => $faker->text,
+        'password' => bcrypt('12345'),
         'remember_token' => str_random(10),
     ];
 });
