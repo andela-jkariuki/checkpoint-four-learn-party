@@ -17,7 +17,7 @@ class CommentController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'comment' => 'required',
+            'comment' => 'required|max:500',
         ]);
         $newComment = Auth::user()->comments()->create($request->all());
         if ($newComment) {
