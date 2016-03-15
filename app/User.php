@@ -41,4 +41,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('LearnParty\Video');
     }
+
+    /**
+     * A user can have many comments
+     *
+     * @return Object
+     */
+    public function comments()
+    {
+        return $this->hasMany('LearnParty\Comment');
+    }
 }
