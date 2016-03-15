@@ -27,7 +27,7 @@ class VideoRequest extends Request
             'title' => 'required|min:5|max:255',
             'url' => 'required|url|active_url|youtube_url',
             'category_list' => 'required',
-            'description' => 'required|min:5|max:255',
+            'description' => 'required|min:5|max:1000',
         ];
     }
 }
