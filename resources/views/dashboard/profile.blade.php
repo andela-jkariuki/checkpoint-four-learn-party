@@ -114,16 +114,16 @@
             $('#uploadAvatar').on('click', function (event)
             {
                 event.preventDefault();
-                $(this)
-                .removeClass('btn-success')
-                .addClass('btn-default')
-                .html('<i class="fa fa-spinner fa-spin"></i> Uploading avatar... ')
-
                 $('#avatar').click();
             });
 
            $('#avatar').on("change", function ()
             {
+                $('#uploadAvatar')
+                    .removeClass('btn-success')
+                    .addClass('btn-default')
+                    .html('<i class="fa fa-spinner fa-spin"></i> Uploading avatar... ');
+
                 $('.uploadAvatar').submit();
             });
         });

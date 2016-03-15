@@ -38,7 +38,7 @@
         </div>
         <div class="col-md-12">
 
-            @include('layouts.video._comments');
+            @include('layouts.video._comments')
 
         </div>
     </div>

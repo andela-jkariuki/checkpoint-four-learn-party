@@ -28,7 +28,7 @@
         {!! Form::model($video, [
                 'method' => 'PATCH',
                 'action' => [
-                    'dashboardController@update',
+                    'DashboardController@update',
                     'id' => $video->id
                 ], 'class' => 'form'
             ])
