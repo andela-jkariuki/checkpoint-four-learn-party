@@ -7,9 +7,15 @@ use LearnParty\Http\Requests;
 use LearnParty\Video;
 use LearnParty\Comment;
 use LearnParty\User;
+use LearnParty\Http\Repositories\VideoRepository;
 
 class VideoController extends Controller
 {
+    public function __construct(VideoRepository $videoRepository)
+    {
+        $this->videoRepository = $videoRepository;
+    }
+
     /**
      * Show a single video, comments, favorites, views and categories
      *
@@ -19,16 +25,13 @@ class VideoController extends Controller
     public function show($id)
     {
         $video = Video::findOrFail($id);
-        $video['video_link'] = substr(parse_url($video->url)['query'], 2);
+        $video['video_link'] = $this->videoRepository->makeYoutubeUrl($video->url);
 
         $user = $video->user;
-
         $categories = $video->categories;
 
-        $comments = Comment::where('video_id', $id)->latest('created_at')->get();
-        $comments = $comments->each(function ($comment, $key) {
-            $comment['user'] = User::find($comment->user_id);
-        });
+        $comments = $this->videoRepository->getAllComments($id);
+        $this->videoRepository->updateViews($id);
 
         return view('video.video', compact('video', 'categories', 'comments', 'user'));
     }

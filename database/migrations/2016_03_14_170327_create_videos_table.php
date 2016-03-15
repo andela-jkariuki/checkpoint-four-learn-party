@@ -18,6 +18,7 @@ class CreateVideosTable extends Migration
             $table->string('url');
             $table->text('description');
             $table->string('user_id');
+            $table->integer('views')->unisigned()->default(0);
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@
                         <a href="#"><i class="fa fa-heart"></i> 5</a>
                     </li>
                     <li>
-                        <i class="fa fa-eye"></i> 101
+                        <i class="fa fa-eye"></i> {{ $video->views + 1 }}
                     </li>
                 </ul>
                 <span class="pull-right">By <a href="#"> {{ $user->name }}</span></a>
