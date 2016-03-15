@@ -3,8 +3,8 @@
 @section('content')
     <div class="container">
         <div class="col-md-12">
-            <h2>Video Name</h2>
-            <iframe width="100%" height="500" src="http://www.youtube.com/embed/pLs4Tex0U1U"></iframe>
+            <h2>{{ $video->title }}</h2>
+            <iframe width="100%" height="500" src="http://www.youtube.com/embed/{{ $video->video_link }}"></iframe>
         </div>
         <div class="col-md-12">
             <div id="video-info" class="well">
@@ -24,14 +24,16 @@
         </div>
         <div class="col-md-3">
             <div id="video-tags" class="well">
-                <span class="badge"><a href="#">php</a></span>
-                <span class="badge"><a href="#">javascript</a></span>
-                <span class="badge"><a href="#">python</a></span>
+
+                @foreach ($categories as $category)
+                    <span class="badge"><a href="#">{{ $category->name }}</a></span>
+                @endforeach
+
             </div>
         </div>
         <div class="col-md-9">
             <div id="video-description" class="well">
-                Fusce pretium, massa sed placerat eleifend, justo magna finibus orci, eget pretium purus sem ac velit. Nunc cursus turpis eu consectetur bibendum. Maecenas fermentum dignissim feugiat. Sed risus ligula, dignissim nec aliquam at, interdum sed nulla. Morbi mollis nulla ac aliquam congue. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis auctor ex sapien. Vivamus nunc dui, semper eu ligula quis, vulputate elementum purus. Pellentesque malesuada id urna in lobortis. Morbi mollis mi laoreet mi aliquam, eu pretium quam sollicitudin.
+                <p>{{ $video->description }}</p>
             </div>
         </div>
         <div class="col-md-12">

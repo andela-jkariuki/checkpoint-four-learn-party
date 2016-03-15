@@ -10,6 +10,12 @@ class VideoController extends Controller
 {
     public function show($id)
     {
-        return view('video.video');
+        $video = Video::findOrFail($id);
+        $url = substr(parse_url($video->url)['query'], 2);
+        $video['video_link'] = $url;
+
+        $categories = $video->categories;
+
+        return view('video.video', compact('video', 'categories'));
     }
 }
