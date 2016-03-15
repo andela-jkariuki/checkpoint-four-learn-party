@@ -10,7 +10,7 @@
                 </a>
             </li>
             <li class="list-group-item active">
-                <a href="{{ url('/dashboard/create') }}">Add New video</a>
+                <a href="{{ url('/dashboard/videos/create') }}">Add New video</a>
             </li>
             <li class="list-group-item">
                 <a href="#">Uploaded videos</a>
@@ -25,7 +25,12 @@
 
         @include('errors.feedback')
 
-        {!! Form::open(['url' => 'dashboard/create', 'method' => 'POST', 'class' => 'form']) !!}
+        {!! Form::open([
+                'method' => 'POST',
+                'action' => ['dashboardController@store'],
+                'class' => 'form'
+            ])
+        !!}
             @include('layouts.dashboard._video_form', ['submitButtonText' => 'Add Video Post'])
         {!! Form::close() !!}
     </div>

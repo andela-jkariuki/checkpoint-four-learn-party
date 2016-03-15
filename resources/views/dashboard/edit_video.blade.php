@@ -10,7 +10,7 @@
                 </a>
             </li>
             <li class="list-group-item active">
-                <a href="{{ url('/dashboard/create') }}">Add New video</a>
+                <a href="{{ route('create_video') }}">Add New video</a>
             </li>
             <li class="list-group-item">
                 <a href="#">Uploaded videos</a>

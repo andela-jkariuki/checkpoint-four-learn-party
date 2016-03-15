@@ -43,7 +43,7 @@ class DashboardController extends Controller
         $request->session()->flash('status', 'success');
         $request->session()->flash('message', 'Video successfully added.');
 
-        return redirect('dashboard/create');
+        return redirect('videos/' . $newVideo->id);
     }
 
     /**
@@ -76,7 +76,7 @@ class DashboardController extends Controller
         $request->session()->flash('status', 'success');
         $request->session()->flash('message', 'Video successfully updated.');
 
-        return redirect('dashboard/' . $id . '/edit');
+        return redirect('dashboard/videos/' . $id . '/edit');
     }
 
     private function syncCategories($video, $tags)

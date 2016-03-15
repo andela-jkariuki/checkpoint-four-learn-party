@@ -32,45 +32,74 @@ Route::group(['middleware' => 'web'], function () {
     /**
      * Get authenitcated user's profile page
      */
-    Route::get('profile', 'UserController@profile');
+    Route::get('profile', [
+        'uses' => 'UserController@profile',
+        'as' => 'profile'
+    ]);
 
     /**
      * Update an authenticated user's profile page
      */
-    Route::put('profile/edit', 'UserController@update');
+    Route::put('profile/edit', [
+        'uses' => 'UserController@update',
+        'as' => 'edit_profile'
+    ]);
 
     /**
      * Update an authenticated user's avatar
      */
-    Route::patch('profile/edit/avatar', 'UserController@updateAvatar');
+    Route::patch('profile/edit/avatar', [
+        'uses' => 'UserController@updateAvatar',
+        'as' => 'update_avatar'
+    ]);
 
     /**
      * Show the new video page
      */
-    Route::get('dashboard/create', 'dashboardController@create');
+    Route::get('dashboard/videos/create', [
+            'uses' => 'dashboardController@create',
+            'as' => 'create_video'
+        ]);
 
     /**
      * Create new video post
      */
-    Route::post('dashboard/create', 'dashboardController@store');
+        Route::post('dashboard/videos/create', [
+            'uses' => 'dashboardController@store',
+            'as' => 'create_video'
+        ]);
 
     /**
      * Get the edit page for a single episode
      */
-    Route::get('dashboard/{id}/edit', 'dashboardController@edit');
+        Route::get('dashboard/videos/{id}/edit', [
+            'uses' => 'dashboardController@edit',
+            'as' => 'edit_video'
+        ]);
 
     /**
-     * Update an exisiting article details
+     * Update an exisiting video details
      */
-    Route::patch('dashboard/{id}', 'dashboardController@update');
+        Route::patch('dashboard/videos/{id}', [
+            'uses' => 'dashboardController@update',
+            'as' => 'update_video'
+        ]);
+
+    /**
+     * View Single video
+     */
+        Route::get('videos/{id}', [
+            'uses' => 'VideoController@show',
+            'as' => 'show_video'
+        ]);
 
     /**
      * redirect to social auth login using socialite
      */
-    Route::get('/auth/{provider}', 'Auth\AuthController@redirectToProvider');
+        Route::get('/auth/{provider}', 'Auth\AuthController@redirectToProvider');
 
     /**
      * Handlr scoail auth provider feedback data
      */
-    Route::get('/auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
+        Route::get('/auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
 });

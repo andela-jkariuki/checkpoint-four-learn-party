@@ -44,4 +44,28 @@
 .btn-social > :first-child {
   line-height: 43px; }
 
+#video-info {
+  overflow: auto; }
+
+#video-info ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+#video-info ul li {
+  display: inline;
+  padding: 5px; }
+
+#video-info ul li:nth-child(even) a {
+  border-left: 2px dotted #959595;
+  border-right: 2px dotted #959595;
+  padding: 0px 10px; }
+
+#video-info ul a {
+  text-decoration: none;
+  color: inherit; }
+
+.badge {
+  padding: 10px; }
+
 /*# sourceMappingURL=app.css.map */
