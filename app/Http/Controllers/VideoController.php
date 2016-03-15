@@ -25,7 +25,7 @@ class VideoController extends Controller
 
         $categories = $video->categories;
 
-        $comments = Comment::where('video_id', $id)->get();
+        $comments = Comment::latest('created_at')->get();
         $comments = $comments->each(function ($comment, $key) {
             $comment['user'] = User::find($comment->user_id);
         });

@@ -86,25 +86,45 @@
         {
             $('#newComment').on("click", function ()
             {
-                if ($('#comment').val().trim().length !== 0) {
-                    $addNewComment = $.ajax({
+                comment = $('#comment').val().trim();
+                if (comment.length !== 0) {
+                    addNewComment = $.ajax({
                         type : 'POST',
                         url: '{{ route("new_comment") }}',
                         data: {
-                            comment:  $('#comment').val().trim(),
+                            comment:  comment,
                             video_id: {{ (int) $video->id }}
                         }
                     });
 
-                    $addNewComment.done(function (response) {
+                    addNewComment.done(function (response) {
                         $('#feedback div').hide();
                         $('#comment').val('');
                         $("#comment-section li a:first").tab('show');
-                        $commentsCount = $('#commentsCount');
-                        $commentsCount.text(Number($commentsCount.text()) + 1);
+                        commentsCount = $('#commentsCount');
+                        commentsCount.text(Number(commentsCount.text()) + 1);
+
+                        newComment = '<li class="media">';
+                        newComment += '<a class="media-left" href="#">';
+                        newComment += '<img class="media-object img-circle img-thumbnail" src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}" style="width:100px;">';
+                        newComment += '</a>';
+                        newComment += '<div class="media-body">';
+                        newComment += '<div class="well">';
+                        newComment += '<h4 class="media-heading">{{ Auth::user()->name }}</h4>';
+                        newComment += '<h6 class="pull-right">1 seecond ago </h6>';
+                        newComment += '<p class="media-comment">' + comment + '</p>';
+                        newComment += '</div>';
+                        newComment += '</div>';
+                        newComment += '</li>';
+                        
+                        if ({{$comments->count() }} === 0) {
+                            $('#all-comments').html('<ul class="media-list">' + newComment+ '</ul>');
+                        } else{
+                            $('#all-comments ul').prepend(newComment);
+                        }
                     });
 
-                    $addNewComment.fail(function (response) {
+                    addNewComment.fail(function (response) {
                         $('#feedback div').show();
                     });
                 } else{
