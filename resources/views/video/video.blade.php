@@ -10,7 +10,7 @@
             <div id="video-info" class="well">
                 <ul class="stats-summary pull-left">
                     <li>
-                        <a href="#"> <i class="fa fa-comment"></i> <span id="commentsCount">{{ $comments->count() }}</span></a>
+                        <i class="fa fa-comment"></i> <span id="commentsCount">{{ $comments->count() }}</span>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-heart"></i> 5</a>
@@ -19,14 +19,15 @@
                         <i class="fa fa-eye"></i> 101
                     </li>
                 </ul>
-                <span class="pull-right">By <a href="#">John Kariuki</span></a>
+                <span class="pull-right">By <a href="#"> {{ $user->name }}</span></a>
             </div>
         </div>
         <div class="col-md-3">
             <div id="video-tags" class="well">
-
                 @foreach ($categories as $category)
+
                     <span class="badge"><a href="#">{{ $category->name }}</a></span>
+
                 @endforeach
 
             </div>

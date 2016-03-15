@@ -21,6 +21,8 @@ class VideoController extends Controller
         $video = Video::findOrFail($id);
         $video['video_link'] = substr(parse_url($video->url)['query'], 2);
 
+        $user = $video->user;
+
         $categories = $video->categories;
 
         $comments = Comment::where('video_id', $id)->get();
@@ -28,6 +30,6 @@ class VideoController extends Controller
             $comment['user'] = User::find($comment->user_id);
         });
 
-        return view('video.video', compact('video', 'categories', 'comments'));
+        return view('video.video', compact('video', 'categories', 'comments', 'user'));
     }
 }
