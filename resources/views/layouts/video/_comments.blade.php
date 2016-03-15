@@ -6,36 +6,26 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane active" id="all-comments">
-            <ul class="media-list">
-                <li class="media">
-                    <a class="media-left" href="#">
-                        <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">
-                    </a>
-                    <div class="media-body">
-                        <div class="well">
-                            <h4 class="media-heading">Marco </h4>
-                            <h6 class="pull-right">2 days ago</h6>
-                            <p class="media-comment">
-                                Great snippet! Thanks for sharing.
-                            </p>
-                        </div>
-                    </div>
-                </li>
-                <li class="media">
-                    <a class="media-left" href="#">
-                        <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/lady_katherine/128.jpg" alt="profile">
-                    </a>
-                    <div class="media-body">
-                        <div class="well">
-                            <h4 class="media-heading">Kriztine</h4>
-                            <h6 class="pull-right">3 hours ago </h6>
-                            <p class="media-comment">
-                                Yehhhh... Thanks for sharing.
-                            </p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+            @if ($comments->count() > 0)
+                <ul class="media-list">
+                @foreach ($comments as $comment)
+                        <li class="media">
+                            <a class="media-left" href="#">
+                                <img class="media-object img-circle img-thumbnail" src="{{ $comment->user->avatar }}" alt="profile" style="width:100px;">
+                            </a>
+                            <div class="media-body">
+                                <div class="well">
+                                    <h4 class="media-heading">{{ $comment->user->name }}</h4>
+                                    <h6 class="pull-right">{{ $comment->created_at->diffForHumans() }}</h6>
+                                    <p class="media-comment">{{ $comment->comment }}</p>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+            @else
+                <div class="well well-lg">There are no comments on this video</div>
+            @endif
         </div>
         <div class="tab-pane" id="new-comment">
             <div id="feedback">
@@ -90,7 +80,10 @@
 
                     $addNewComment.done(function (response) {
                         $('#feedback div').hide();
+                        $('#comment').val('');
                         $("#comment-section li a:first").tab('show');
+                        $commentsCount = $('#commentsCount');
+                        $commentsCount.text(Number($commentsCount.text()) + 1);
                     });
 
                     $addNewComment.fail(function (response) {
@@ -102,8 +95,4 @@
             });
         });
       </script>
-    <!-- @if ($errors->has('comment'))
-            $('#comment-section li a:last').tab('show');
-            $("html, body").animate({ scrollTop: $(document).height() }, 1000);
-    @endif -->
 @endsection

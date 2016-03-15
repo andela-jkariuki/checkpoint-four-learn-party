@@ -10,7 +10,7 @@
             <div id="video-info" class="well">
                 <ul class="stats-summary pull-left">
                     <li>
-                        <a href="#"> <i class="fa fa-comment"></i> 1</a>
+                        <a href="#"> <i class="fa fa-comment"></i> <span id="commentsCount">{{ $comments->count() }}</span></a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-heart"></i> 5</a>
