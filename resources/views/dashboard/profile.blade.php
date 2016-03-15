@@ -22,7 +22,12 @@
 
         @include('errors.feedback')
 
-        {!! Form::model(Auth::user(), ['url' => 'profile/edit', 'method' => 'PUT', 'class' => 'form']) !!}
+        {!! Form::model(Auth::user(), [
+            'method' => 'PUT',
+            'action' => ['UserController@update'],
+            'class' => 'form'
+            ])
+        !!}
 
             <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                 {!! Form::label('username', 'Username') !!}
@@ -75,7 +80,13 @@
     <div class="col-md-4">
         <h2>Profile Picture</h2>
         <img src="{{ Auth::user()->avatar }}" style="width:250px;height:250px">
-        {!! Form::model(Auth::user(), ['url' => '/profile/edit/avatar', 'method' => 'PATCH', 'class' => 'form uploadAvatar', 'files' => true]) !!}
+        {!! Form::model(Auth::user(), [
+            'method' => 'PATCH',
+            'action' => ['UserController@updateAvatar'],
+            'class' => 'form uploadAvatar',
+            'files' => true
+            ])
+        !!}
 
          <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
             {!! Form::file('avatar', [
