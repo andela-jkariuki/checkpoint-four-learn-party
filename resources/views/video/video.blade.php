@@ -4,7 +4,7 @@
     <div class="container">
         <div class="col-md-12">
             <h2>{{ $video->title }}</h2>
-            <iframe width="100%" height="500" src="http://www.youtube.com/embed/{{ $video->video_link }}"></iframe>
+            <iframe width="100%" height="500" src="http://www.youtube.com/embed/{{ $video->video_link }}" allowfullscreen></iframe>
         </div>
         <div class="col-md-12">
             <div id="video-info" class="well">
