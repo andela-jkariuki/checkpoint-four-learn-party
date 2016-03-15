@@ -40,9 +40,6 @@ class DashboardController extends Controller
         $newVideo = Auth::user()->videos()->create($request->all());
         $this->syncCategories($newVideo, $request->input('category_list'));
 
-        $request->session()->flash('status', 'success');
-        $request->session()->flash('message', 'Video successfully added.');
-
         return redirect('videos/' . $newVideo->id);
     }
 
