@@ -57,7 +57,7 @@ Route::group(['middleware' => 'web'], function () {
      * Show the new video page
      */
     Route::get('dashboard/videos/create', [
-            'uses' => 'dashboardController@create',
+            'uses' => 'DashboardController@create',
             'as' => 'create_video'
         ]);
 
@@ -65,7 +65,7 @@ Route::group(['middleware' => 'web'], function () {
      * Create new video post
      */
         Route::post('dashboard/videos/create', [
-            'uses' => 'dashboardController@store',
+            'uses' => 'DashboardController@store',
             'as' => 'create_video'
         ]);
 
@@ -73,7 +73,7 @@ Route::group(['middleware' => 'web'], function () {
      * Get the edit page for a single episode
      */
         Route::get('dashboard/videos/{id}/edit', [
-            'uses' => 'dashboardController@edit',
+            'uses' => 'DashboardController@edit',
             'as' => 'edit_video'
         ]);
 
@@ -81,8 +81,16 @@ Route::group(['middleware' => 'web'], function () {
      * Update an exisiting video details
      */
         Route::patch('dashboard/videos/{id}', [
-            'uses' => 'dashboardController@update',
+            'uses' => 'DashboardController@update',
             'as' => 'update_video'
+        ]);
+
+    /**
+     * Create new comment
+     */
+        Route::post('comments/create', [
+            'uses' => 'CommentController@create',
+            'as' => 'new_comment'
         ]);
 
     /**

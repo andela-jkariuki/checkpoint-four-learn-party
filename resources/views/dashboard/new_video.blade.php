@@ -27,7 +27,7 @@
 
         {!! Form::open([
                 'method' => 'POST',
-                'action' => ['dashboardController@store'],
+                'action' => ['DashboardController@store'],
                 'class' => 'form'
             ])
         !!}

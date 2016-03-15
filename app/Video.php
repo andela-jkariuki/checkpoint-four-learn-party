@@ -44,4 +44,14 @@ class Video extends Model
     {
         return $this->belongsToMany('LearnParty\Category')->withTimestamps();
     }
+
+    /**
+     * A video can have many comments.
+     *
+     * @return Object
+     */
+    public function comments()
+    {
+        return $this->hasMany('LearnParty\Comment');
+    }
 }
