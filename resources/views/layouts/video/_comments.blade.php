@@ -135,6 +135,11 @@
             $('#favorite_video').on('click', function (event) {
                 event.preventDefault();
 
+                    $('.fa-heart')
+                    .removeClass('fa-heart')
+                    .removeClass('likesVideo')
+                    .addClass('fa-cog fa-spin');
+
                     newFavorite = $.ajax({
                         type : 'POST',
                         url: '{{ route("update_favorite") }}',
@@ -145,11 +150,19 @@
 
                     newFavorite.done(function (response) {
                         if (response.message === 'favorited') {
-                            $('.fa-heart').addClass('likesVideo');
+                            $('.fa-cog')
+                            .removeClass('fa-cog')
+                            .removeClass('fa-spin')
+                            .addClass('fa-heart likesVideo');
+
                             favoritesCount = $('.favorites-count');
                             favoritesCount.text(Number(favoritesCount.text()) + 1);
                         } else{
-                            $('.fa-heart').removeClass('likesVideo');
+                            $('.fa-cog')
+                            .removeClass('fa-cog')
+                            .removeClass('fa-spin')
+                            .addClass('fa-heart');
+
                             favoritesCount = $('.favorites-count');
                             favoritesCount.text(Number(favoritesCount.text()) - 1);
                         }
