@@ -101,6 +101,15 @@ Route::group(['middleware' => 'web'], function () {
             'as' => 'show_video'
         ]);
 
+        /**
+         * add a new favorite to a video or 
+         * remove an existing one
+         */
+        Route::post('favorites/update', [
+            'uses'=> 'FavoritesController@update',
+            'as' => 'update_favorite'
+        ]);
+
     /**
      * redirect to social auth login using socialite
      */

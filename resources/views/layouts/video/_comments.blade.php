@@ -116,11 +116,11 @@
                         newComment += '</div>';
                         newComment += '</div>';
                         newComment += '</li>';
-                        
+
                         if ({{$comments->count() }} === 0) {
                             $('#all-comments').html('<ul class="media-list">' + newComment+ '</ul>');
                         } else{
-                            $('#all-comments ul').prepend(newComment);
+                            $('#all-comments ul').append(newComment);
                         }
                     });
 
@@ -130,6 +130,43 @@
                 } else{
                     $('#feedback div').show();
                 }
+            });
+
+            $('#favorite_video').on('click', function (event) {
+                event.preventDefault();
+
+                    $('.fa-heart')
+                    .removeClass('fa-heart')
+                    .removeClass('likesVideo')
+                    .addClass('fa-cog fa-spin');
+
+                    newFavorite = $.ajax({
+                        type : 'POST',
+                        url: '{{ route("update_favorite") }}',
+                        data: {
+                            video_id: {{ (int) $video->id }}
+                        }
+                    });
+
+                    newFavorite.done(function (response) {
+                        if (response.message === 'favorited') {
+                            $('.fa-cog')
+                            .removeClass('fa-cog')
+                            .removeClass('fa-spin')
+                            .addClass('fa-heart likesVideo');
+
+                            favoritesCount = $('.favorites-count');
+                            favoritesCount.text(Number(favoritesCount.text()) + 1);
+                        } else{
+                            $('.fa-cog')
+                            .removeClass('fa-cog')
+                            .removeClass('fa-spin')
+                            .addClass('fa-heart');
+
+                            favoritesCount = $('.favorites-count');
+                            favoritesCount.text(Number(favoritesCount.text()) - 1);
+                        }
+                    });
             });
         });
       </script>

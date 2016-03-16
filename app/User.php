@@ -51,4 +51,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('LearnParty\Comment');
     }
+
+    /**
+     * A user can have many favorites
+     *
+     * @return Object
+     */
+    public function favorites()
+    {
+        return $this->hasMany('LearnParty\Favorite');
+    }
 }
