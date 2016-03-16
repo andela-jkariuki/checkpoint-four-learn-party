@@ -120,7 +120,7 @@
                         if ({{$comments->count() }} === 0) {
                             $('#all-comments').html('<ul class="media-list">' + newComment+ '</ul>');
                         } else{
-                            $('#all-comments ul').prepend(newComment);
+                            $('#all-comments ul').append(newComment);
                         }
                     });
 

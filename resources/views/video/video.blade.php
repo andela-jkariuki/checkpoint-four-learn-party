@@ -13,7 +13,7 @@
                         <i class="fa fa-comment"></i> <span id="commentsCount">{{ $comments->count() }}</span>
                     </li>
                     <li>
-                        <a id="favorite_video" href="#">
+                        <a id="favorite_video" href="{{ Auth::user() ? '#': url('/login') }}">
                             <i class="fa fa-heart{{ $likesVideo ? ' likesVideo': '' }}"></i>
                             <span class="favorites-count">{{ $favorites->count() }}</span>
                         </a>

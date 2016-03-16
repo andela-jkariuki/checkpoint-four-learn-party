@@ -28,7 +28,7 @@ class VideoRepository
      */
     public function getAllComments($videoId)
     {
-        return Comment::where('video_id', $videoId)->latest('created_at')->get();
+        return Comment::where('video_id', $videoId)->get();
         $comments = $comments->each(function ($comment, $key) {
             $comment['user'] = User::find($comment->user_id);
         });
@@ -54,10 +54,12 @@ class VideoRepository
      */
     public function getLikeStatus($video)
     {
-        $favorites = $video->favorites;
-        foreach ($favorites as $key => $favorite) {
-            if ($favorite->user_id === Auth::user()->id) {
-                return true;
+        if (Auth::user()) {
+            $favorites = $video->favorites;
+            foreach ($favorites as $key => $favorite) {
+                if ($favorite->user_id === Auth::user()->id) {
+                    return true;
+                }
             }
         }
         return false;
