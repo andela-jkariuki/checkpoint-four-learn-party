@@ -54,4 +54,14 @@ class Video extends Model
     {
         return $this->hasMany('LearnParty\Comment');
     }
+
+    /**
+     * A video can have many favorites
+     *
+     * @return Object
+     */
+    public function favorites()
+    {
+        return $this->hasMany('LearnParty\Favorite');
+    }
 }
