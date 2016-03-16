@@ -116,7 +116,7 @@
                         newComment += '</div>';
                         newComment += '</div>';
                         newComment += '</li>';
-                        
+
                         if ({{$comments->count() }} === 0) {
                             $('#all-comments').html('<ul class="media-list">' + newComment+ '</ul>');
                         } else{
@@ -130,6 +130,30 @@
                 } else{
                     $('#feedback div').show();
                 }
+            });
+
+            $('#favorite_video').on('click', function (event) {
+                event.preventDefault();
+
+                    newFavorite = $.ajax({
+                        type : 'POST',
+                        url: '{{ route("update_favorite") }}',
+                        data: {
+                            video_id: {{ (int) $video->id }}
+                        }
+                    });
+
+                    newFavorite.done(function (response) {
+                        if (response.message === 'favorited') {
+                            $('.fa-heart').addClass('likesVideo');
+                            favoritesCount = $('.favorites-count');
+                            favoritesCount.text(Number(favoritesCount.text()) + 1);
+                        } else{
+                            $('.fa-heart').removeClass('likesVideo');
+                            favoritesCount = $('.favorites-count');
+                            favoritesCount.text(Number(favoritesCount.text()) - 1);
+                        }
+                    });
             });
         });
       </script>
