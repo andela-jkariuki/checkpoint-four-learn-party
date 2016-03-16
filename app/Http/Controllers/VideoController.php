@@ -29,10 +29,14 @@ class VideoController extends Controller
 
         $user = $video->user;
         $categories = $video->categories;
+        $favorites = $video->favorites;
+
+        $likesVideo = $this->videoRepository->getLikeStatus($video);
 
         $comments = $this->videoRepository->getAllComments($id);
+
         $this->videoRepository->updateViews($id);
 
-        return view('video.video', compact('video', 'categories', 'comments', 'user'));
+        return view('video.video', compact('video', 'categories', 'comments', 'user', 'favorites', 'likesVideo'));
     }
 }
