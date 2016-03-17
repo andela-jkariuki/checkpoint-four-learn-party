@@ -22,6 +22,7 @@
 */
 
 Route::group(['middleware' => 'web'], function () {
+
     Route::auth();
 
     /**
@@ -30,119 +31,138 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/', [
             'uses' => 'HomeController@index',
             'as' => 'homepage'
+    ]);
+
+    /**
+     * Authentication routes
+     */
+    Route::group(['prefix' => '/auth/{provider}'], function () {
+        /**
+         * redirect to social auth login using socialite
+         */
+        Route::get('', 'Auth\AuthController@redirectToProvider');
+
+        /**
+         * Handle social auth provider feedback data
+         */
+        Route::get('callback', 'Auth\AuthController@handleProviderCallback');
+    });
+
+    /**
+     * User profile routes
+     */
+    Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
+
+        /**
+         * Get authenitcated user's profile page
+         */
+        Route::get('', [
+            'uses' => 'UserController@profile',
+            'as' => 'profile'
         ]);
 
-    /**
-     * Get authenitcated user's profile page
-     */
-    Route::get('profile', [
-        'uses' => 'UserController@profile',
-        'as' => 'profile'
-    ]);
-
-    /**
-     * Update an authenticated user's profile page
-     */
-    Route::put('profile/edit', [
-        'uses' => 'UserController@update',
-        'as' => 'edit_profile'
-    ]);
-
-    /**
-     * Update an authenticated user's avatar
-     */
-    Route::patch('profile/edit/avatar', [
-        'uses' => 'UserController@updateAvatar',
-        'as' => 'update_avatar'
-    ]);
-
-    /**
-     * Show the new video page
-     */
-    Route::get('dashboard/videos/create', [
-            'uses' => 'DashboardController@create',
-            'as' => 'create_video'
+        /**
+         * Update an authenticated user's profile page
+         */
+        Route::put('edit', [
+            'uses' => 'UserController@update',
+            'as' => 'edit_profile'
         ]);
 
+        /**
+         * Update an authenticated user's avatar
+         */
+        Route::patch('edit/avatar', [
+            'uses' => 'UserController@updateAvatar',
+            'as' => 'update_avatar'
+        ]);
+    });
+
     /**
-     * Create new video post
+     * User dashboard routes
      */
-        Route::post('dashboard/videos/create', [
+    Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
+        /**
+         * Show the new video page
+         */
+        Route::get('videos/create', [
+                'uses' => 'DashboardController@create',
+                'as' => 'create_video'
+            ]);
+
+        /**
+         * Create new video post
+         */
+        Route::post('videos/create', [
             'uses' => 'DashboardController@store',
             'as' => 'create_video'
         ]);
 
-    /**
-     * Get the edit page for a single episode
-     */
-        Route::get('dashboard/videos/{id}/edit', [
+        /**
+         * Get the edit page for a single episode
+         */
+        Route::get('videos/{id}/edit', [
             'uses' => 'DashboardController@edit',
             'as' => 'edit_video'
         ]);
 
-    /**
-     * Update an exisiting video details
-     */
-        Route::put('dashboard/videos/{id}', [
+        /**
+         * Update an exisiting video details
+         */
+        Route::put('videos/{id}', [
             'uses' => 'DashboardController@update',
             'as' => 'update_video'
         ]);
 
-        Route::delete('dashboard/videos/{id}', [
+        /**
+         * Delete a video
+         */
+        Route::delete('videos/{id}', [
             'uses' => 'DashboardController@delete',
             'as' => 'delete_video'
         ]);
-
-    /**
-     * Create new comment
-     */
-        Route::post('comments/create', [
-            'uses' => 'CommentController@create',
-            'as' => 'new_comment'
-        ]);
+    });
 
     /**
      * View Single video
      */
-        Route::get('videos/{id}', [
-            'uses' => 'VideoController@show',
-            'as' => 'show_video'
-        ]);
-
-        /**
-         * add a new favorite to a video or
-         * remove an existing one
-         */
-        Route::post('favorites/update', [
-            'uses'=> 'FavoritesController@update',
-            'as' => 'update_favorite'
-        ]);
-
-        /**
-         * Get all videos that are under a certain category
-         *
-         */
-        Route::get('category/{category}', [
-            'uses' => 'CategoryController@show',
-            'as' => 'show_category'
-        ]);
-
-        /**
-         * Get all videos that belong to a given user
-         *
-         */
-        Route::get('users/{user}', [
-            'uses' => 'UserController@userVideos',
-            'as' => 'show_user'
-        ]);
+    Route::get('videos/{id}', [
+        'uses' => 'VideoController@show',
+        'as' => 'show_video'
+    ]);
 
     /**
-     * redirect to social auth login using socialite
+     * add a new favorite to a video or
+     * remove an existing one
      */
-        Route::get('/auth/{provider}', 'Auth\AuthController@redirectToProvider');
+    Route::post('favorites/update', [
+        'uses'=> 'FavoritesController@update',
+        'as' => 'update_favorite'
+    ]);
 
     /**
-     * Handlr scoail auth provider feedback data
+     * Create new comment
      */
-        Route::get('/auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
+    Route::post('comments/create', [
+        'uses' => 'CommentController@create',
+        'as' => 'new_comment'
+    ]);
+
+    /**
+     * Get all videos that are under a certain category
+     *
+     */
+    Route::get('category/{category}', [
+        'uses' => 'CategoryController@show',
+        'as' => 'show_category'
+    ]);
+
+    /**
+     * Get all videos that belong to a given user
+     *
+     */
+    Route::get('users/{user}', [
+        'uses' => 'UserController@userVideos',
+        'as' => 'show_user'
+    ]);
 });
