@@ -14,7 +14,6 @@ class DashboardController extends Controller
 {
     public function __construct(VideoRepository $videoRepository)
     {
-        $this->middleware('auth');
         $this->videoRepository = $videoRepository;
     }
 
