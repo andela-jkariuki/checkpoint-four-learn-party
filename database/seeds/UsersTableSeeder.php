@@ -11,6 +11,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(LearnParty\User::class)->create();
+        factory(LearnParty\User::class, 10)->create();
     }
 }

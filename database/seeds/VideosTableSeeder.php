@@ -77,7 +77,7 @@ class VideosTableSeeder extends Seeder
             'views' => rand(1, 100)
         ]);
 
-        factory(LearnParty\Video::class)->create([
+        factory(LearnParty\Video::class, 40)->create([
             'url' => 'k8tzfpeyPzw',
             'views' => rand(1, 100)
         ]);
