@@ -37,6 +37,21 @@ $factory->define(LearnParty\Video::class, function (Faker\Generator $faker) {
         'url' => 'https://www.youtube.com/watch?v=pLs4Tex0U1U',
         'description' => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
         'user_id' => 1,
-        'views' => 10
+        'views' => 10,
+    ];
+});
+
+$factory->define(LearnParty\Comment::class, function (Faker\Generator $faker) {
+    return [
+        'comment' => $faker->sentence,
+        'video_id' => rand(1, 11),
+        'user_id' => rand(1, 10),
+    ];
+});
+
+$factory->define(LearnParty\Favorite::class, function (Faker\Generator $faker) {
+    return [
+        'video_id' => rand(1, 11),
+        'user_id' => rand(1, 10),
     ];
 });

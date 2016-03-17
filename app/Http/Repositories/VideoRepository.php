@@ -113,4 +113,31 @@ class VideoRepository
 
         return false;
     }
+
+    /**
+     * Get the most popular videos in the followin categories
+     * Liked
+     * commented on
+     * Favorited
+     *
+     * @return array  top popular videos
+     */
+    public function getTopPopularVideos($number = 3)
+    {
+        $topViewed = Video::orderBy('views', 'DESC')->get()->take($number);
+
+        $topFavorited = Video::all()->each(function ($video, $key) {
+            $video->favorites = $video->favorites->count();
+        })->sortByDesc('favorites')->take($number);
+
+        $topCommentedOn = Video::all()->each(function ($video, $key) {
+            $video->comments = $video->comments->count();
+        })->sortByDesc('comments')->take($number);
+
+        return [
+            'topViewed' => $topViewed,
+            'topFavorited' => $topFavorited,
+            'topCommentedOn' => $topCommentedOn
+        ];
+    }
 }
