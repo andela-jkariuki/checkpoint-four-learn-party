@@ -21,12 +21,12 @@
         </ul>
     </div>
     <div class="col-md-5 col-md-offsets-1">
-        <h3>Updated Video Post</h3>
+        <h3>Updated {{ link_to_route('delete_video', $title = $video->title, $parameters = ['id' => $video->id], $attributes = []) }}</h3>
 
         @include('errors.feedback')
 
         {!! Form::model($video, [
-                'method' => 'PATCH',
+                'method' => 'PUT',
                 'action' => [
                     'DashboardController@update',
                     'id' => $video->id

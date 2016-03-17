@@ -56,8 +56,12 @@ class DashboardController extends Controller
     public function edit($id)
     {
         $video = Video::findOrFail($id);
-        $video->url = 'https://www.youtube.com/watch?v='.$video->url;
 
+        if ($this->videoRepository->validVideoEditor($video)) {
+            return redirect()->route('homepage');
+        }
+
+        $video->url = 'https://www.youtube.com/watch?v='.$video->url;
         $categories = Category::lists('name', 'id');
 
         return view('dashboard.edit_video', compact('categories', 'video'));
@@ -72,9 +76,14 @@ class DashboardController extends Controller
      */
     public function update(VideoRequest $request, $id)
     {
-        $updatdVideo = Video::findOrFail($id);
-        $updatdVideo->update($request->all());
-        $this->syncCategories($updatdVideo, $request->input('category_list'));
+        $video = Video::findOrFail($id);
+
+        if ($this->videoRepository->validVideoEditor($video)) {
+            return redirect()->route('homepage');
+        }
+
+        $video->update($request->all());
+        $this->syncCategories($video, $request->input('category_list'));
 
         $request->session()->flash('status', 'success');
         $request->session()->flash('message', 'Video successfully updated.');
@@ -82,6 +91,34 @@ class DashboardController extends Controller
         return redirect('dashboard/videos/' . $id . '/edit');
     }
 
+    /**
+     * Delete a video
+     *
+     * @param  Integer $id Video Id
+     * @return Redirect     Redirect use to appropriate page
+     */
+    public function delete($id)
+    {
+        if ($this->videoRepository->validVideoEditor(Video::findOrFail($id))) {
+            return redirect()->route('homepage');
+        }
+
+        Video::delete($id);
+
+        $request->session()->flash('status', 'success');
+        $request->session()->flash('message', 'Video successfully updated.');
+
+        return redirect()->route('homepage');
+    }
+
+    /**
+     * Add link between video and category in
+     * pivot table
+     *
+     * @param  Object $video Video object
+     * @param  array $tags   Associated tag Ids
+     * @return void
+     */
     private function syncCategories($video, $tags)
     {
         $video->categories()->sync($tags);
