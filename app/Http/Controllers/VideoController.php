@@ -25,7 +25,6 @@ class VideoController extends Controller
     public function show($id)
     {
         $video = Video::findOrFail($id);
-        $video['video_link'] = $this->videoRepository->makeYoutubeUrl($video->url);
 
         $user = $video->user;
         $categories = $video->categories;

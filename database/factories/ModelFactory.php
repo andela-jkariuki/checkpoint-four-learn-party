@@ -18,7 +18,7 @@ $factory->define(LearnParty\User::class, function (Faker\Generator $faker) {
         'email' => $faker->email,
         'avatar' => 'http://res.cloudinary.com/johnkariuki/image/upload/v1457982393/y9doba4mv488u7s4pzfx.jpg',
         'provider_id' => 'traditional',
-        'provder' => 'traditional',
+        'provider' => 'traditional',
         'about' => $faker->text,
         'password' => bcrypt('12345'),
         'remember_token' => str_random(10),
@@ -28,5 +28,15 @@ $factory->define(LearnParty\User::class, function (Faker\Generator $faker) {
 $factory->define(LearnParty\Category::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
+    ];
+});
+
+$factory->define(LearnParty\Video::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->name,
+        'url' => 'https://www.youtube.com/watch?v=pLs4Tex0U1U',
+        'description' => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
+        'user_id' => 1,
+        'views' => 10
     ];
 });
