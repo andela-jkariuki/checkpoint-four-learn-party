@@ -2,6 +2,7 @@
 
 namespace LearnParty\Http\Controllers;
 
+use LearnParty\Http\Repositories\VideoRepository;
 use Illuminate\Http\Request;
 use LearnParty\Http\Requests;
 use LearnParty\Http\Requests\VideoRequest;
@@ -11,9 +12,10 @@ use Auth;
 
 class DashboardController extends Controller
 {
-    public function __construct()
+    public function __construct(VideoRepository $videoRepository)
     {
         $this->middleware('auth');
+        $this->videoRepository = $videoRepository;
     }
 
     /**
@@ -37,6 +39,8 @@ class DashboardController extends Controller
      */
     public function store(VideoRequest $request)
     {
+        $request['url'] = $this->videoRepository->makeYoutubeUrl($request->all()['url']);
+
         $newVideo = Auth::user()->videos()->create($request->all());
         $this->syncCategories($newVideo, $request->input('category_list'));
 

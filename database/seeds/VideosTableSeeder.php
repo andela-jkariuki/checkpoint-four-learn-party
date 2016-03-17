@@ -6,17 +6,17 @@ class VideosTableSeeder extends Seeder
 {
     /**
     public static $youtubeVideos = [
-        'https://www.youtube.com/watch?v=m1_EDno-44M',
-        'https://www.youtube.com/watch?v=pLs4Tex0U1U',
-        'https://www.youtube.com/watch?v=UDwe95oocsw',
-        'https://www.youtube.com/watch?v=3Hn9hLOljJI',
-        'https://www.youtube.com/watch?v=LrCHz1gwzTo',
-        'https://www.youtube.com/watch?v=JQbiR2gtyw0',
-        'https://www.youtube.com/watch?v=H_AQFnqMY3E',
-        'https://www.youtube.com/watch?v=ttWobUlBFOY',
-        'https://www.youtube.com/watch?v=ReI6gvzVP0Y',
-        'https://www.youtube.com/watch?v=UDwe95oocsw',
-        'https://www.youtube.com/watch?v=k8tzfpeyPzw',
+        'm1_EDno-44M',
+        'pLs4Tex0U1U',
+        'UDwe95oocsw',
+        '3Hn9hLOljJI',
+        'LrCHz1gwzTo',
+        'JQbiR2gtyw0',
+        'H_AQFnqMY3E',
+        'ttWobUlBFOY',
+        'ReI6gvzVP0Y',
+        'UDwe95oocsw',
+        'k8tzfpeyPzw',
     ];
     */
 
@@ -28,57 +28,57 @@ class VideosTableSeeder extends Seeder
     public function run()
     {
         factory(LearnParty\Video::class)->create([
-            'url' => 'https://www.youtube.com/watch?v=m1_EDno-44M',
+            'url' => 'm1_EDno-44M',
             'views' => rand(1, 100)
         ]);
 
         factory(LearnParty\Video::class)->create([
-            'url' => 'https://www.youtube.com/watch?v=pLs4Tex0U1U',
+            'url' => 'pLs4Tex0U1U',
             'views' => rand(1, 100)
         ]);
 
         factory(LearnParty\Video::class)->create([
-            'url' => 'https://www.youtube.com/watch?v=UDwe95oocsw',
+            'url' => 'UDwe95oocsw',
             'views' => rand(1, 100)
         ]);
 
         factory(LearnParty\Video::class)->create([
-            'url' => 'https://www.youtube.com/watch?v=3Hn9hLOljJI',
+            'url' => '3Hn9hLOljJI',
             'views' => rand(1, 100)
         ]);
 
         factory(LearnParty\Video::class)->create([
-            'url' => 'https://www.youtube.com/watch?v=LrCHz1gwzTo',
+            'url' => 'LrCHz1gwzTo',
             'views' => rand(1, 100)
         ]);
 
         factory(LearnParty\Video::class)->create([
-            'url' => 'https://www.youtube.com/watch?v=JQbiR2gtyw0',
+            'url' => 'JQbiR2gtyw0',
             'views' => rand(1, 100)
         ]);
 
         factory(LearnParty\Video::class)->create([
-            'url' => 'https://www.youtube.com/watch?v=H_AQFnqMY3E',
+            'url' => 'H_AQFnqMY3E',
             'views' => rand(1, 100)
         ]);
 
         factory(LearnParty\Video::class)->create([
-            'url' => 'https://www.youtube.com/watch?v=ttWobUlBFOY',
+            'url' => 'ttWobUlBFOY',
             'views' => rand(1, 100)
         ]);
 
         factory(LearnParty\Video::class)->create([
-            'url' => 'https://www.youtube.com/watch?v=ReI6gvzVP0Y',
+            'url' => 'ReI6gvzVP0Y',
             'views' => rand(1, 100)
         ]);
 
         factory(LearnParty\Video::class)->create([
-            'url' => 'https://www.youtube.com/watch?v=UDwe95oocsw',
+            'url' => 'UDwe95oocsw',
             'views' => rand(1, 100)
         ]);
 
         factory(LearnParty\Video::class)->create([
-            'url' => 'https://www.youtube.com/watch?v=k8tzfpeyPzw',
+            'url' => 'k8tzfpeyPzw',
             'views' => rand(1, 100)
         ]);
     }
