@@ -60,20 +60,26 @@
         <div class="col-md-9">
             <div id="video-library">
 
-            @foreach($videos->chunk(3) as $chunk)
+            @if($videos->count() > 0)
 
-                <div class="row">
-                @foreach($chunk as $video)
+                @foreach($videos->chunk(3) as $chunk)
 
-                    @include ('layouts._video')
+                    <div class="row">
+                    @foreach($chunk as $video)
 
+                        @include ('layouts._video')
+
+                    @endforeach
+
+                    </div>
                 @endforeach
 
+                {!! $videos->links() !!}
+            @else
+                <div class="well well-lg">
+                    <i class="fa fa-info-circle"></i> There are no videos to display. PLease check again later.
                 </div>
-            @endforeach
-
-            {!! $videos->links() !!}
-
+            @endif
             </div>
         </div>
     </div>

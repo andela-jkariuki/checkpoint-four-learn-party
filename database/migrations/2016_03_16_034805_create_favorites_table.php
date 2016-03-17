@@ -22,7 +22,8 @@ class CreateFavoritesTable extends Migration
             $table->integer('video_id')->unslgned();
              $table->foreign('video_id')
                   ->references('id')
-                  ->on('videos');
+                  ->on('videos')
+                  ->onDelete('cascade');
 
             $table->timestamps();
         });

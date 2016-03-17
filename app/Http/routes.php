@@ -27,7 +27,10 @@ Route::group(['middleware' => 'web'], function () {
     /**
      * Learn party root
      */
-    Route::get('/', 'HomeController@index');
+    Route::get('/', [
+            'uses' => 'HomeController@index',
+            'as' => 'homepage'
+        ]);
 
     /**
      * Get authenitcated user's profile page
@@ -80,9 +83,14 @@ Route::group(['middleware' => 'web'], function () {
     /**
      * Update an exisiting video details
      */
-        Route::patch('dashboard/videos/{id}', [
+        Route::put('dashboard/videos/{id}', [
             'uses' => 'DashboardController@update',
             'as' => 'update_video'
+        ]);
+
+        Route::delete('dashboard/videos/{id}', [
+            'uses' => 'DashboardController@delete',
+            'as' => 'delete_video'
         ]);
 
     /**
@@ -102,7 +110,7 @@ Route::group(['middleware' => 'web'], function () {
         ]);
 
         /**
-         * add a new favorite to a video or 
+         * add a new favorite to a video or
          * remove an existing one
          */
         Route::post('favorites/update', [

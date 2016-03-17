@@ -97,4 +97,20 @@ class VideoRepository
             'message' => 'unfavorited'
         ];
     }
+
+    /**
+     * If the person trying to edit or delete a video is not the
+     * owner, redirect to the homepage
+     *
+     * @param  Object $video Video collection
+     * @return boolean        true if valid, otherwise false
+     */
+    public function validVideoEditor($video)
+    {
+        if (Auth::user()->id == $video->user_id) {
+            return true;
+        }
+
+        return false;
+    }
 }

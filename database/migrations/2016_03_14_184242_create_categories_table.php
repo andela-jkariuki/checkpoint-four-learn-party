@@ -27,7 +27,8 @@ class CreateCategoriesTable extends Migration
             $table->integer('video_id')->unsigned();
             $table->foreign('video_id')
                   ->references('id')
-                  ->on('videos');
+                  ->on('videos')
+                  ->onDelete('cascade');
 
             $table->timestamps();
         });
