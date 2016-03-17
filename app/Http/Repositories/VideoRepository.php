@@ -107,7 +107,7 @@ class VideoRepository
      */
     public function validVideoEditor($video)
     {
-        if (Auth::user()->id != $video->user_id) {
+        if (Auth::user()->id == $video->user_id) {
             return true;
         }
 

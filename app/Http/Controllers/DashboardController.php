@@ -57,7 +57,7 @@ class DashboardController extends Controller
     {
         $video = Video::findOrFail($id);
 
-        if ($this->videoRepository->validVideoEditor($video)) {
+        if (!$this->videoRepository->validVideoEditor($video)) {
             return redirect()->route('homepage');
         }
 
@@ -78,7 +78,7 @@ class DashboardController extends Controller
     {
         $video = Video::findOrFail($id);
 
-        if ($this->videoRepository->validVideoEditor($video)) {
+        if (!$this->videoRepository->validVideoEditor($video)) {
             return redirect()->route('homepage');
         }
 
@@ -97,18 +97,19 @@ class DashboardController extends Controller
      * @param  Integer $id Video Id
      * @return Redirect     Redirect use to appropriate page
      */
-    public function delete($id)
+    public function delete(Request $request, $id)
     {
-        if ($this->videoRepository->validVideoEditor(Video::findOrFail($id))) {
-            return redirect()->route('homepage');
+        if ($this->videoRepository->validVideoEditor(Video::findOrFail($id)) && Video::destroy($id)) {
+            $request->session()->flash('status', 'success');
+            $request->session()->flash('message', 'Video successfully deleted.');
+        } else {
+            $request->session()->flash('status', 'error');
+            $request->session()->flash('message', 'Error Deleting video. Please try again');
         }
 
-        Video::delete($id);
-
-        $request->session()->flash('status', 'success');
-        $request->session()->flash('message', 'Video successfully updated.');
-
-        return redirect()->route('homepage');
+        return [
+            'message' => 'redirect'
+        ];
     }
 
     /**
