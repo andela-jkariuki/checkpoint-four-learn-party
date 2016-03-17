@@ -82,6 +82,7 @@ class DashboardController extends Controller
             return redirect()->route('homepage');
         }
 
+        $request['url'] = $this->videoRepository->makeYoutubeUrl($request->all()['url']);
         $video->update($request->all());
         $this->syncCategories($video, $request->input('category_list'));
 
