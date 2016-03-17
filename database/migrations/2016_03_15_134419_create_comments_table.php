@@ -15,7 +15,13 @@ class CreateCommentsTable extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
             $table->text('comment');
+
             $table->integer('video_id');
+            $table->foreign('video_id')
+                  ->references('id')
+                  ->on('videos')
+                  ->onDelete('cascade');
+
             $table->integer('user_id');
             $table->timestamps();
         });
@@ -28,6 +34,10 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
+        Schema::table('comments', function (Blueprint $table) {
+            $table->dropForeign(['video_id']);
+        });
+
         Schema::drop('comments');
     }
 }
