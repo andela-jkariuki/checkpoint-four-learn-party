@@ -37,7 +37,7 @@ $factory->define(LearnParty\Video::class, function (Faker\Generator $faker) {
         'url' => 'https://www.youtube.com/watch?v=pLs4Tex0U1U',
         'description' => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
         'user_id' => 1,
-        'views' => 10,
+        'views' => rand(1, 100),
     ];
 });
 
