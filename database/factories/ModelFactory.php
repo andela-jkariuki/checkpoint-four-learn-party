@@ -40,3 +40,18 @@ $factory->define(LearnParty\Video::class, function (Faker\Generator $faker) {
         'views' => 10
     ];
 });
+
+$factory->define(LearnParty\Comment::class, function (Faker\Generator $faker) {
+    return [
+        'comment' => $faker->sentence,
+        'video_id' => rand(1, 11),
+        'user_id' => 1,
+    ];
+});
+
+$factory->define(LearnParty\Favorite::class, function (Faker\Generator $faker) {
+    return [
+        'video_id' => rand(1, 11),
+        'user_id' => 1,
+    ];
+});
