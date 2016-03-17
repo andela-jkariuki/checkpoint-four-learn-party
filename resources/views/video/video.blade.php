@@ -27,7 +27,7 @@
                     <a href="{{ route('edit_video', ['id' => $video->id]) }}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
                     <a href="{{ route('delete_video', ['id' => $video->id ]) }}" class="btn btn-danger btn-xs delete-video"><i class="fa fa-trash"></i></a>
                 @else
-                    Created by <a href="#"> {{ $user->name }}</a> <span class="incognito-text">{{ $video->created_at->diffForHumans() }}</span>
+                    Created by <a href="{{ route('show_user', ['id' => $video->user_id]) }}"> {{ $user->name }}</a> <span class="incognito-text">{{ $video->created_at->diffForHumans() }}</span>
                 @endif
                 </div>
             </div>
@@ -37,7 +37,9 @@
             @if($categories->count() > 0)
                 @foreach ($categories as $category)
 
-                    <span class="badge"><a href="#">{{ $category->name }}</a></span>
+                    <span class="badge">
+                            <a href="{{ route ('show_category', ['category' => $category->name]) }}">{{ $category->name }}</a>
+                    </span>
 
                 @endforeach
             @else
