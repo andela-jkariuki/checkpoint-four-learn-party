@@ -5,11 +5,15 @@
                     </div>
                     <div class="panel-body popular-videos">
                         <span class="badge"><a href="{{ route('homepage') }}">All</a></span>
-                        <span class="badge"><a href="#">javascript</a></span>
-                        <span class="badge"><a href="#">php</a></span>
-                        <span class="badge"><a href="#">java</a></span>
-                        <span class="badge"><a href="#">python</a></span>
-                        <span class="badge"><a href="#">ruby</a></span>
+
+                        @foreach($categories as $category)
+
+                            <span class="badge">
+                                <a href="{{ route ('show_category', ['category' => $category->name]) }}">{{ $category->name }}</a>
+                            </span>
+
+                        @endforeach
+
                     </div>
                 </div>
             </div>

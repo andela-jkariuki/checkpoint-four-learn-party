@@ -4,6 +4,7 @@ namespace LearnParty\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Validator;
+use LearnParty\Category;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,11 +15,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Validator::extend('youtube_url', function($attribute, $value, $parameters, $validator) {
+        Validator::extend('youtube_url', function ($attribute, $value, $parameters, $validator) {
 
             $urlParts = [
-                'scheme', 
-                'host', 
+                'scheme',
+                'host',
                 'path',
                 'query',
             ];
@@ -26,10 +27,12 @@ class AppServiceProvider extends ServiceProvider
             if ($url = parse_url($value)) {
                 if (count(array_diff($urlParts, array_keys($url))) == 0) {
                     return $url['host'] === 'youtube.com' || $url['host'] === 'www.youtube.com';
-                } 
+                }
             }
             return false;
         });
+
+        view()->composer('layouts.side_nav', 'LearnParty\Http\Composers\SideNavComposer');
     }
 
     /**

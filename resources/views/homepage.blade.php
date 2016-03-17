@@ -29,7 +29,7 @@
                 {!! $videos->links() !!}
             @else
                 <div class="well well-lg">
-                    <i class="fa fa-info-circle"></i> There are no videos to display. PLease check again later.
+                    <i class="fa fa-info-circle"></i> There are no videos to display. Please check again later.
                 </div>
             @endif
             </div>
