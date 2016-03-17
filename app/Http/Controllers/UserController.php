@@ -80,4 +80,10 @@ class UserController extends Controller
 
         return redirect('profile');
     }
+
+    public function userVideos($user)
+    {
+        $videos = User::find($user)->videos()->paginate(12);
+        return view('homepage', compact('videos'));
+    }
 }

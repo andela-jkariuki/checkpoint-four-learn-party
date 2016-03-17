@@ -118,9 +118,22 @@ Route::group(['middleware' => 'web'], function () {
             'as' => 'update_favorite'
         ]);
 
+        /**
+         * Get all videos that are under a certain category
+         *
+         */
         Route::get('category/{category}', [
             'uses' => 'CategoryController@show',
             'as' => 'show_category'
+        ]);
+
+        /**
+         * Get all videos that belong to a given user
+         *
+         */
+        Route::get('users/{user}', [
+            'uses' => 'UserController@userVideos',
+            'as' => 'show_user'
         ]);
 
     /**
