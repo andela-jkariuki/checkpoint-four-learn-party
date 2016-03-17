@@ -118,6 +118,11 @@ Route::group(['middleware' => 'web'], function () {
             'as' => 'update_favorite'
         ]);
 
+        Route::get('category/{category}', [
+            'uses' => 'CategoryController@show',
+            'as' => 'show_category'
+        ]);
+
     /**
      * redirect to social auth login using socialite
      */
