@@ -22,17 +22,27 @@
                         <i class="fa fa-eye"></i> {{ $video->views + 1 }}
                     </li>
                 </ul>
-                <span class="pull-right">By <a href="#"> {{ $user->name }}</span></a>
+                <div class="pull-right">
+                @if (Auth::check() && Auth::user()->id == $video->user_id)
+                    <a href="{{ route('edit_video', ['id' => $video->id]) }}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
+                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                @else
+                    Created by <a href="#"> {{ $user->name }}</a> <span class="incognito-text">{{ $video->created_at->diffForHumans() }}</span>
+                @endif
+                </div>
             </div>
         </div>
         <div class="col-md-3">
             <div id="video-tags" class="well">
+            @if($categories->count() > 0)
                 @foreach ($categories as $category)
 
                     <span class="badge"><a href="#">{{ $category->name }}</a></span>
 
                 @endforeach
-
+            @else
+                    <span class="badge">Uncategorized</span>
+            @endif
             </div>
         </div>
         <div class="col-md-9">

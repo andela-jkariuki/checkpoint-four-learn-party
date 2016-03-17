@@ -20,12 +20,12 @@
                 @endif
             </div>
 
-            <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}">
+            <div class="form-group{{ $errors->has('category_list') ? ' has-error' : '' }}">
                 {!! Form::label('category_list', 'Video Category') !!}
                 {!! Form::select('category_list[]', $categories, null, ['class' => 'form-control', 'multiple', 'id' => 'category_list']) !!}
-                @if ($errors->has('category'))
+                @if ($errors->has('category_list'))
                     <span class="help-block">
-                        <strong>{{ $errors->first('category') }}</strong>
+                        <strong>{{ $errors->first('category_list') }}</strong>
                     </span>
                 @endif
             </div>

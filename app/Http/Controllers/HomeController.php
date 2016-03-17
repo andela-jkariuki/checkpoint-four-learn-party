@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $videos = Video::latest()->paginate(6);
+        $videos = Video::latest()->paginate(12);
         return view('homepage', compact('videos'));
     }
 }
