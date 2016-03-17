@@ -56,6 +56,8 @@ class DashboardController extends Controller
     public function edit($id)
     {
         $video = Video::findOrFail($id);
+        $video->url = 'https://www.youtube.com/watch?v='.$video->url;
+
         $categories = Category::lists('name', 'id');
 
         return view('dashboard.edit_video', compact('categories', 'video'));
