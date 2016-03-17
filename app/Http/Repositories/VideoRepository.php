@@ -5,6 +5,7 @@ namespace LearnParty\Http\Repositories;
 use LearnParty\Video;
 use LearnParty\Comment;
 use LearnParty\Favorite;
+use LearnParty\User;
 use Auth;
 
 class VideoRepository
@@ -134,10 +135,15 @@ class VideoRepository
             $video->comments = $video->comments->count();
         })->sortByDesc('comments')->take($number);
 
+        $topUsers = User::all()->each(function ($user, $key) {
+            $user->videos = $user->videos->count();
+        })->sortByDesc('videos')->take(5);
+
         return [
             'topViewed' => $topViewed,
             'topFavorited' => $topFavorited,
-            'topCommentedOn' => $topCommentedOn
+            'topCommentedOn' => $topCommentedOn,
+            'topUsers' => $topUsers,
         ];
     }
 }

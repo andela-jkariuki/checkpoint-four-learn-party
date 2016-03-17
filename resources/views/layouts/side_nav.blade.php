@@ -71,3 +71,25 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Top video publishers</h3>
+                    </div>
+                    <div class="panel-body popular-videos">
+
+                        @foreach($topVideos['topUsers'] as $user)
+
+                            @if ($user->videos !== 0)
+
+                                <span class="badge">
+                                    <a href="{{ route ('show_user', ['id' => $user->id]) }}">{{ $user->name }}</a>
+                                    <span class="incognito-text">({{ $user->videos }})</span>
+                                </span>
+
+                            @endif
+                        @endforeach
+
+                    </div>
+                </div>
+            </div>
