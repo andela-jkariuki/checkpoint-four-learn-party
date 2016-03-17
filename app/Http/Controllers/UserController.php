@@ -82,7 +82,10 @@ class UserController extends Controller
 
     public function userVideos($user)
     {
-        $videos = User::find($user)->videos()->paginate(12);
-        return view('homepage', compact('videos'));
+        $user = User::find($user);
+        $videos = $user->videos()->paginate(7);
+        $headline = $videos->shift();
+
+        return view('user_videos', compact('user', 'videos', 'headline'));
     }
 }
