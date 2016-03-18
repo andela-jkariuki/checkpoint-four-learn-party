@@ -124,4 +124,23 @@ class DashboardController extends Controller
     {
         $video->categories()->sync($tags);
     }
+
+    /**
+     * Return a list of all favorited user videos
+     *
+     * @return View
+     */
+    public function favorites()
+    {
+        $videos = Video::whereIn('id', Auth::user()->favorites->lists('video_id')->toArray());
+        $favorites = [];
+
+        $videos->each(function ($video, $Key) use (&$favorites) {
+            $favorites[$video->id] = $video->favorites->count();
+        });
+
+        $videos = $videos->paginate(9);
+
+        return view('dashboard.favorites', compact('videos', 'favorites'));
+    }
 }

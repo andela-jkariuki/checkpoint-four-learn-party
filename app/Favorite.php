@@ -18,7 +18,7 @@ class Favorite extends Model
      */
     public function user()
     {
-        return $this->hasMany('LearnParty\User');
+        return $this->belongsTo('LearnParty\User');
     }
 
     /**
@@ -28,6 +28,6 @@ class Favorite extends Model
      */
     public function video()
     {
-        return $this->hasMany('LearnParty\User');
+        return $this->belongsTo('LearnParty\Video');
     }
 }

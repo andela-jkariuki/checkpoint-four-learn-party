@@ -99,6 +99,22 @@ Route::group(['middleware' => 'web'], function () {
         ]);
 
         /**
+         * List of all videos uploaded by a user
+         */
+        Route::get('videos/uploads', [
+            'uses' => 'DashboardController@uploads',
+            'as' => 'video_uploads'
+        ]);
+
+        /**
+         *  List of all videos favorited by a user
+         */
+        Route::get('videos/favorites', [
+            'uses' => 'DashboardController@favorites',
+            'as' => 'video_favorites'
+        ]);
+
+        /**
          * Get the edit page for a single episode
          */
         Route::get('videos/{id}/edit', [
