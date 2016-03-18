@@ -5,13 +5,13 @@
                     {{ Auth::user()->name }}'{{ substr(Auth::user()->name, -1) == 's' ? '' : 's' }} profile
                 </a>
             </li>
-            <li class="list-group-item active">
+            <li class="list-group-item">
                 <a href="{{ route('create_video') }}">Add New video</a>
             </li>
             <li class="list-group-item">
-                <a href="#">Uploaded videos</a>
+                <a href="{{ route('video_uploads') }}">My Uploaded videos</a>
             </li>
             <li class="list-group-item">
-                <a href="#">Favorite Videos</a>
+                <a href="{{ route('video_favorites') }}">My Favorited Videos</a>
             </li>
         </ul>
