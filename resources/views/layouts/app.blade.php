@@ -76,7 +76,11 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ route('profile') }}"><i class="fa fa-btn fa-user"></i> Profile</a></li>
+                                <li>
+                                    <a href="{{ route('profile') }}">
+                                        <i class="fa fa-btn fa-user"></i> {{ Auth::user()->name }}'{{ substr(Auth::user()->name, -1) == 's' ? '' : 's' }} profile
+                                    </a>
+                                </li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ route('create_video') }}"><i class="fa fa-btn fa-dashboard"></i> Dashboard</a></li>
                                 <li role="separator" class="divider"></li>
