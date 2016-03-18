@@ -42,7 +42,7 @@
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
 
                 <!-- Collapsed Hamburger -->
@@ -92,6 +92,12 @@
 
         @yield('content')
 
+    </div>
+    <div id="footer">
+        <strong>Made with <i class="fa fa-heart"></i></strong>
+        <span class="pull-right">
+            <strong> #TIA {{ \Carbon\Carbon::now()->year }}</strong>
+        </span>
     </div>
 
     <!-- JavaScripts -->
