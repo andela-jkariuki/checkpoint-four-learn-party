@@ -143,4 +143,15 @@ class DashboardController extends Controller
 
         return view('dashboard.favorites', compact('videos', 'favorites'));
     }
+
+    /**
+     * Return a list of all videos uploaded by a user
+     *
+     * @return Video
+     */
+    public function uploads()
+    {
+        $videos = Auth::user()->videos()->paginate(3);
+        return view('dashboard.uploads', compact('videos'));
+    }
 }

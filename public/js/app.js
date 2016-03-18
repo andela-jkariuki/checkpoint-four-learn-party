@@ -30,7 +30,7 @@ $(document).ready(function ()
 
             $deleteVideo.done(function (response) {
                 if (response.message === "redirect") {
-                    window.location = '/dashboard/videos/create';
+                    window.location = '/dashboard/videos';
                 }
             });
         });
