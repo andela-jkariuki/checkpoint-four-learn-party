@@ -1,4 +1,10 @@
 {
+  "name": "learn-party",
+  "description": "A learnning management system",
+  "version": "1.0.0",
+  "engines": {
+    "node": "5.5.0"
+  },
   "private": true,
   "devDependencies": {
     "gulp": "^3.8.8"
