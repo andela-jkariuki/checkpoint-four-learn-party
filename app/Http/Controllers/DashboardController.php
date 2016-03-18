@@ -151,7 +151,7 @@ class DashboardController extends Controller
      */
     public function uploads()
     {
-        $videos = Auth::user()->videos()->paginate(3);
+        $videos = Auth::user()->videos()->paginate(9);
         return view('dashboard.uploads', compact('videos'));
     }
 }

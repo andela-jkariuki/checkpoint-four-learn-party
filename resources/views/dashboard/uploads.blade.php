@@ -7,9 +7,12 @@
         @include('layouts.dashboard._user_side_nav')
 
     </div>
-    <div id-"user-favorite-videos" class="col-md-9">
+    <div class="col-md-9">
         <h1>My Uploaded videos</h1>
         <hr>
+        @include('errors.feedback')
+
+        <div id="video-library">
 
         @if ($videos->count() > 0)
             @foreach($videos->chunk(3) as $chunk)
@@ -52,6 +55,7 @@
                 <i class="fa fa-info-circle"></i> You do not have any uploaded videos.
             </div>
         @endif
+        </div>
     </div>
 </div>
 @endsection
