@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "98170f4476cd08514b94979112dd252b",
-    "content-hash": "2c2a5ff345f26620412e8540a6bac9ee",
+    "hash": "74d84467b8185aa5d5353f9168675510",
+    "content-hash": "83bb23797dde0fec6bdc1d80e85bde2c",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -611,6 +611,50 @@
                 "uri"
             ],
             "time": "2016-02-18 21:54:00"
+        },
+        {
+            "name": "heroku/heroku-buildpack-php",
+            "version": "v97",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/heroku/heroku-buildpack-php.git",
+                "reference": "f5c08f61f14d376320c6b7ec3418bae7a962fca2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/heroku/heroku-buildpack-php/zipball/f5c08f61f14d376320c6b7ec3418bae7a962fca2",
+                "reference": "f5c08f61f14d376320c6b7ec3418bae7a962fca2",
+                "shasum": ""
+            },
+            "bin": [
+                "bin/heroku-hhvm-apache2",
+                "bin/heroku-hhvm-nginx",
+                "bin/heroku-php-apache2",
+                "bin/heroku-php-nginx"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Zuelke",
+                    "email": "dz@heroku.com"
+                }
+            ],
+            "description": "Toolkit for starting a PHP application locally, with or without foreman, using the same config for PHP/HHVM and Apache2/Nginx as on Heroku",
+            "homepage": "http://github.com/heroku/heroku-buildpack-php",
+            "keywords": [
+                "apache",
+                "apache2",
+                "foreman",
+                "heroku",
+                "hhvm",
+                "nginx",
+                "php"
+            ],
+            "time": "2016-03-10 18:54:45"
         },
         {
             "name": "jakub-onderka/php-console-color",
