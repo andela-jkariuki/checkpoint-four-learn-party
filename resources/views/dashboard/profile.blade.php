@@ -3,19 +3,9 @@
 @section('content')
 <div class="row">
     <div class="col-md-3 card">
-        <ul class="list-group">
-            <li class="list-group-item active">
-                <a href="{{ url('/profile') }}">
-                    {{ Auth::user()->name }}'{{ substr(Auth::user()->name, -1) == 's' ? '' : 's' }} profile
-                </a>
-            </li>
-            <li class="list-group-item">
-                <a href="#">Favorites</a>
-            </li>
-            <li class="list-group-item">
-                <a href="#">Episodes</a>
-            </li>
-        </ul>
+
+        @include('layouts.dashboard._user_side_nav')
+
     </div>
     <div class="col-md-5 col-md-offsets-1">
         <h2>Update Profile</h2>
