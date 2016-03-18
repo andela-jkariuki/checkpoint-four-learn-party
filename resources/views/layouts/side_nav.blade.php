@@ -24,13 +24,15 @@
                     </div>
                     <div class="panel-body popular-videos">
                         @foreach($topVideos['topViewed'] as $video)
+                            @if ($video->views !== 0)
 
                             <h5 class="top-videos">
                                 <i class="fa fa-youtube-play"></i>
                                 <a href="{{ route('show_video', ['id' => $video->id]) }}">{{ substr($video->title, 0, 25) }} {{ strlen($video->title) > 25 ? '...': ''}}</a>
-                                <span class="incognito-text">({{ $video->views}})</span>
+                                <span class="incognito-text">({{ $video->views }})</span>
                             </h5>
 
+                             @endif
                         @endforeach
                     </div>
                 </div>
@@ -42,13 +44,15 @@
                     </div>
                     <div class="panel-body popular-videos">
                         @foreach($topVideos['topFavorited'] as $video)
+                            @if ($video->favorites !== 0)
 
                             <h5 class="top-videos">
                                 <i class="fa fa-youtube-play"></i>
                                 <a href="{{ route('show_video', ['id' => $video->id]) }}">{{ substr($video->title, 0, 25) }} {{ strlen($video->title) > 25 ? '...': ''}}</a>
-                                <span class="incognito-text">({{ $video->favorites}})</span>
+                                <span class="incognito-text">({{ $video->favorites }})</span>
                             </h5>
 
+                             @endif
                         @endforeach
                     </div>
                 </div>
@@ -60,13 +64,15 @@
                     </div>
                     <div class="panel-body popular-videos">
                         @foreach($topVideos['topCommentedOn'] as $video)
+                            @if ($video->comments !== 0)
 
                             <h5 class="top-videos">
                                 <i class="fa fa-youtube-play"></i>
                                 <a href="{{ route('show_video', ['id' => $video->id]) }}">{{ substr($video->title, 0, 25) }} {{ strlen($video->title) > 25 ? '...': ''}}</a>
-                                <span class="incognito-text">({{ $video->comments}})</span>
+                                <span class="incognito-text">({{ $video->comments }})</span>
                             </h5>
 
+                             @endif
                         @endforeach
                     </div>
                 </div>
@@ -79,7 +85,6 @@
                     <div class="panel-body popular-videos">
 
                         @foreach($topVideos['topUsers'] as $user)
-
                             @if ($user->videos !== 0)
 
                                 <span class="badge">
