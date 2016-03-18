@@ -1,6 +1,8 @@
 
                     <div class="col-sm-4 col-md-4">
-                        <iframe class="video-iframe" src="http://www.youtube.com/embed/{{ $video->url }}" allowfullscreen=""></iframe>
+                        <a href="{{ route('show_video', ['id' => $video->id]) }}">
+                            <img class="video-iframe" src="http://img.youtube.com/vi/{{ $video->url }}/0.jpg" allowfullscreen="">
+                        </a>
                         <section class="video">
                             <div class="title">
                                 <h4>
