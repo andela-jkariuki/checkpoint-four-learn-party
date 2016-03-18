@@ -16,6 +16,6 @@
     "laravel-elixir": "^4.0.0"
   },
   "scripts": {
-    "postinstall": "node_moduels/bin/bower install && node_modules/bin/gulp"
+    "postinstall": "node_modules/bin/bower install && node_modules/bin/gulp"
   }
 }
