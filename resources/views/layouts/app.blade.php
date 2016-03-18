@@ -34,11 +34,11 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
-    <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/bootstrap.min.css', env('APP_ENV') == 'production') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
-    <link href="{{ URL::asset('bower/bootstrap-social/bootstrap-social.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('bower/sweetalert/dist/sweetalert.css') }}" rel="stylesheet">
-    <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('bower/bootstrap-social/bootstrap-social.css', env('APP_ENV') == 'production') }}" rel="stylesheet">
+    <link href="{{ URL::asset('bower/sweetalert/dist/sweetalert.css', env('APP_ENV') == 'production') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/app.css', env('APP_ENV') == 'production') }}" rel="stylesheet">
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default">
@@ -109,11 +109,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
 
-    <script src="{{ URL::asset('bower/sweetalert/dist/sweetalert.min.js') }}"></script>
+    <script src="{{ URL::asset('bower/sweetalert/dist/sweetalert.min.js', env('APP_ENV') == 'production') }}"></script>
 
     @yield('js')
 
-    <script src="{{ URL::asset('js/app.js') }}"></script>
+    <script src="{{ URL::asset('js/app.js', env('APP_ENV') == 'production') }}"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
 </html>
