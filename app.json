@@ -1,0 +1,140 @@
+{
+  "name": "checkpoint-four-learn-party",
+  "description": "",
+  "scripts": {
+  },
+  "env": {
+    "APP_DEBUG": {
+      "required": true
+    },
+    "APP_ENV": {
+      "required": true
+    },
+    "APP_KEY": {
+      "required": true
+    },
+    "APP_URL": {
+      "required": true
+    },
+    "AWS_BUCKET": {
+      "required": true
+    },
+    "AWS_KEY": {
+      "required": true
+    },
+    "AWS_REGION": {
+      "required": true
+    },
+    "AWS_SECRET": {
+      "required": true
+    },
+    "CACHE_DRIVER": {
+      "required": true
+    },
+    "CLOUDINARY_API_BASE_URL": {
+      "required": true
+    },
+    "CLOUDINARY_API_KEY": {
+      "required": true
+    },
+    "CLOUDINARY_API_SECRET": {
+      "required": true
+    },
+    "CLOUDINARY_BASE_URL": {
+      "required": true
+    },
+    "CLOUDINARY_CLOUD_NAME": {
+      "required": true
+    },
+    "CLOUDINARY_SECURE_URL": {
+      "required": true
+    },
+    "DB_DATABASE": {
+      "required": true
+    },
+    "DB_HOST": {
+      "required": true
+    },
+    "DB_PASSWORD": {
+      "required": true
+    },
+    "DB_PORT": {
+      "required": true
+    },
+    "DB_USERNAME": {
+      "required": true
+    },
+    "FACEBOOK_APP_ID": {
+      "required": true
+    },
+    "FACEBOOK_APP_SECRET": {
+      "required": true
+    },
+    "FACEBOOK_CALLBACK_URL": {
+      "required": true
+    },
+    "GITHUB_APP_ID": {
+      "required": true
+    },
+    "GITHUB_APP_SECRET": {
+      "required": true
+    },
+    "GITHUB_CALLBACK_URL": {
+      "required": true
+    },
+    "MAIL_DRIVER": {
+      "required": true
+    },
+    "MAIL_ENCRYPTION": {
+      "required": true
+    },
+    "MAIL_HOST": {
+      "required": true
+    },
+    "MAIL_PASSWORD": {
+      "required": true
+    },
+    "MAIL_PORT": {
+      "required": true
+    },
+    "MAIL_USERNAME": {
+      "required": true
+    },
+    "QUEUE_DRIVER": {
+      "required": true
+    },
+    "REDIS_HOST": {
+      "required": true
+    },
+    "REDIS_PASSWORD": {
+      "required": true
+    },
+    "REDIS_PORT": {
+      "required": true
+    },
+    "SESSION_DRIVER": {
+      "required": true
+    },
+    "TWITTER_APP_ID": {
+      "required": true
+    },
+    "TWITTER_APP_SECRET": {
+      "required": true
+    },
+    "TWITTER_CALLBACK_URL": {
+      "required": true
+    }
+  },
+  "addons": [
+    "papertrail",
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "urn:buildpack:heroku/php"
+    },
+    {
+      "url": "urn:buildpack:heroku/nodejs"
+    }
+  ]
+}
