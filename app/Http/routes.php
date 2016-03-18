@@ -101,7 +101,7 @@ Route::group(['middleware' => 'web'], function () {
         /**
          * List of all videos uploaded by a user
          */
-        Route::get('videos/uploads', [
+        Route::get('videos', [
             'uses' => 'DashboardController@uploads',
             'as' => 'video_uploads'
         ]);
