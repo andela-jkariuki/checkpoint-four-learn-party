@@ -38,7 +38,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
     <link href="{{ URL::asset('bower/bootstrap-social/bootstrap-social.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('bower/sweetalert/dist/sweetalert.css') }}" rel="stylesheet">
-    <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default">
