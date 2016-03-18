@@ -80,6 +80,12 @@ class UserController extends Controller
         return redirect('profile');
     }
 
+    /**
+     * Get all videos that belong to a user
+     *
+     * @param  Intger $user the user id
+     * @return Video
+     */
     public function userVideos($user)
     {
         $user = User::find($user);
