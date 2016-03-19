@@ -16,7 +16,7 @@ class UserController extends Controller
     }
 
     /**
-     * Return the user's profile page
+     * Return the user's profile page.
      *
      * @return view
      */
@@ -26,7 +26,7 @@ class UserController extends Controller
     }
 
     /**
-     * update the user's record
+     * update the user's record.
      *
      * @param  Request $request User request
      * @return
@@ -49,7 +49,7 @@ class UserController extends Controller
     }
 
     /**
-     * upload an avatar to cloudinary and return url
+     * upload an avatar to cloudinary and return url.
      *
      * @param  Request $request Request from user
      * @return Object           redirect to profile page
@@ -80,7 +80,7 @@ class UserController extends Controller
     }
 
     /**
-     * Get all videos that belong to a user
+     * Get all videos that belong to a user.
      *
      * @param  Intger $user the user id
      * @return Video

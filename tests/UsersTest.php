@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class UsersTest extends TestCase
 {
     use  LearnParty\Tests\PersistTestData;
+    use DatabaseMigrations;
 
     /**
      * Assert that a user is able to view their profile.
@@ -33,12 +34,13 @@ class UsersTest extends TestCase
         $this->actingAs($user)
              ->visit('/profile')
              ->type('A swanky new profile update', 'about')
-             ->press('update-profile');
+             ->press('update-profile')
+             ->seeInDatabase('users', ['about' => 'A swanky new profile update']);
     }
 
     /**
      * Assert that users can see all the videos uploaded by a specific
-     * user
+     * user.
      *
      * @return void
      */
@@ -57,5 +59,42 @@ class UsersTest extends TestCase
             'users/' . $user->id
         );
         $this->assertViewHasAll(['user', 'videos', 'headline']);
+    }
+
+    /**
+     * If a user has registered before using social auth, return a user object
+     * else, create a new user record.
+     *
+     * @return void
+     */
+    public function testAuthenticateUser()
+    {
+        $user = (object)[
+            "id" => 1001,
+            "nickname" => "testusername",
+            "name" => "Test Name",
+            "email" => "test@suyabay.com",
+            "avatar_original" => "imageUrl"
+        ];
+
+        $newUser = $this->userRepository->authenticateUser($user, 'facebook')->toArray();
+        $this->assertTrue(is_array($newUser));
+        $this->assertArrayHasKey('username', $newUser);
+        $this->assertEquals('Test Name', $newUser['name']);
+        $this->seeInDatabase('users', ['email' => 'test@suyabay.com']);
+    }
+
+    /**
+     * test User repositoriy's updateUserInfo
+     *
+     * @return void
+     */
+    public function testUpdateUserInfo()
+    {
+        $this->createAndLoginUser();
+        $updateUser = $this->userRepository->updateUserInfo(['about' => 'A swanky new bio about me']);
+
+        $this->assertTrue($updateUser);
+        $this->seeInDatabase('users', ['about' => 'A swanky new bio about me']);
     }
 }
