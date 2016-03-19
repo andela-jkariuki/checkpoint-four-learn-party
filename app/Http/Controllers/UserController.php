@@ -40,8 +40,7 @@ class UserController extends Controller
             'about' => 'required|min:5',
         ]);
 
-        User::find(Auth::user()->id)
-            ->update($request->all());
+        $this->userRepository->updateUserInfo($request->all());
 
         $request->session()->flash('status', 'success');
         $request->session()->flash('message', 'Profile successfully updated.');
