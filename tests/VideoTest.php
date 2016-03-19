@@ -41,4 +41,16 @@ class VideoTest extends TestCase
         $this->assertEquals($comments[0]->comment, $getComments->toArray()[0]['comment']);
         $this->assertEquals($comments[0]->video_id, $getComments->toArray()[0]['video_id']);
     }
+
+    /**
+     * Test that the make Youtube Url correctly parses a youtube Url
+     */
+
+    public function testMakeYoutubeUrl()
+    {
+        $yotubeUrl = 'https://www.youtube.com/watch?v=pLs4Tex0U1U';
+        $yotubeVideoId = 'pLs4Tex0U1U';
+
+        $this->assertEquals($yotubeVideoId, $this->videoRepository->makeYoutubeUrl($yotubeUrl));
+    }
 }
