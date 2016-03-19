@@ -36,9 +36,9 @@ class FavoritesController extends Controller
                        ->get();
 
         if ($favorite->count() === 0) {
-            return $this->videoRepository->favoriteVideo($request);
+            return $this->videoRepository->favoriteVideo($request->all());
         }
 
-        return $this->videoRepository->unFavoriteVideo($request);
+        return $this->videoRepository->unFavoriteVideo($request->all());
     }
 }

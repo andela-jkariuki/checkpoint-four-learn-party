@@ -84,7 +84,7 @@ class VideoRepository
      */
     public function favoriteVideo($request)
     {
-        Favorite::create($request->all());
+        Favorite::create($request);
         return [
             'status' => 200,
             'message' => 'favorited'
@@ -100,7 +100,7 @@ class VideoRepository
     public function unfavoriteVideo($request)
     {
         Favorite::where('user_id', Auth::user()->id)
-              ->where('video_id', $request->input('video_id'))
+              ->where('video_id', $request['video_id'])
               ->delete();
 
         return [
