@@ -21,4 +21,24 @@ class VideoTest extends TestCase
         $this->assertEquals($video->title, $searchVideo->title);
         $this->assertEquals($video->url, $searchVideo->url);
     }
+
+    /**
+     * Test that a user viewing a video is able to get all the
+     * comments on a video
+     *
+     * @return void
+     */
+    public function testGetAllComments()
+    {
+        $video = factory('LearnParty\Video')->create();
+        $comments = factory('LearnParty\Comment', 3)->create(['video_id' => 1]);
+
+        $getComments = $this->videoRepository->getAllComments($video->id);
+
+        $this->assertTrue(is_array($getComments->toArray()));
+        $this->assertArrayHasKey('comment', $getComments->toArray()[0]);
+        $this->assertArrayHasKey('video_id', $getComments->toArray()[0]);
+        $this->assertEquals($comments[0]->comment, $getComments->toArray()[0]['comment']);
+        $this->assertEquals($comments[0]->video_id, $getComments->toArray()[0]['video_id']);
+    }
 }
