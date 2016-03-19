@@ -201,6 +201,7 @@ class VideoTest extends TestCase
         $videoRequest = new \LearnParty\Http\Requests\VideoRequest();
         $rules = $videoRequest->rules();
 
+        $this->assertTrue($videoRequest->authorize());
         $this->assertTrue(is_array($rules));
         $this->assertArrayHasKey('title', $rules);
         $this->assertEquals('required|min:5|max:255', $rules['title']);
