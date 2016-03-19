@@ -11,6 +11,16 @@ use Auth;
 class VideoRepository
 {
     /**
+     * Get a single video
+     *
+     * @return void
+     */
+    public function getVideo($id)
+    {
+        return Video::findOrFail($id);
+    }
+
+    /**
      * Update the number of views by one everytime a video is viewed
      *
      * @param  Integer $id video Id
