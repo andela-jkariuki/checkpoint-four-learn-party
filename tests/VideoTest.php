@@ -102,6 +102,8 @@ class VideoTest extends TestCase
     }
 
     /**
+     * VideoRepository getTopPopularVideos
+     *
      * Assert that getTopPopularVideos returns
      *
      * Top viwewed Videos
@@ -147,6 +149,8 @@ class VideoTest extends TestCase
     }
 
     /**
+     * VideoRepository favoriteVideo, unfavoriteVideo
+     *
      * Assert that a user can favorite and unfavorite a video
      *
      * @return
@@ -167,5 +171,23 @@ class VideoTest extends TestCase
 
         $this->assertEquals(200, $unFav['status']);
         $this->assertEquals('unfavorited', $unFav['message']);
+    }
+
+    /**
+     * VideoRepository validVideoEditor
+     *
+     * Assert that we can validate the owner of a video from the
+     * validVideoEditor.
+     *
+     * @return [type] [description]
+     */
+    public function testValidVideoEditor()
+    {
+        $myVideo = factory('LearnParty\Video')->create();
+        $otherVideo = factory('LearnParty\Video')->create(['user_id' => 2]);
+
+        $this->login();
+        $this->assertTrue($this->videoRepository->validVideoEditor($myVideo));
+        $this->assertFalse($this->videoRepository->validVideoEditor($otherVideo));
     }
 }
