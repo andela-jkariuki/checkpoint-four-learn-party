@@ -139,4 +139,46 @@ section.video p {
 #footer .fa-heart {
   color: red; }
 
+.navbar {
+  margin-bottom: 0; }
+
+h1 {
+  margin-top: 0px; }
+
+#landing-page {
+  position: relative;
+  background: url("../images/bg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+  margin-bottom: 21px;
+  color: #fff; }
+
+.landing-page-title h1 {
+  font-size: 5em;
+  padding-top: 50px; }
+
+.landing-page-call-to-action {
+  padding-top: 50px; }
+
+.landing-page-title h2 {
+  padding-top: 50px;
+  padding-bottom: 15px; }
+
+.landing-page-title {
+  position: absolute;
+  top: 5%;
+  left: 15%; }
+
+.fa-chevron-circle-down {
+  position: absolute;
+  left: 45.5%;
+  color: #fff;
+  font-size: 3em;
+  bottom: 250px; }
+
+.site-highlight {
+  color: #18bc9c; }
+
 /*# sourceMappingURL=app.css.map */
