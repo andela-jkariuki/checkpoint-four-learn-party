@@ -6,9 +6,15 @@ use Auth;
 
 trait PersistTestData
 {
-    public function login()
+    public function createAndLoginUser()
     {
         $user = factory('LearnParty\User')->create(['email' => 'test@Learnparty.com']);
-        return Auth::attempt(['email' => 'test@Learnparty.com', 'password' => '12345']);
+        $authenticateUser = Auth::attempt(['email' => 'test@Learnparty.com', 'password' => '12345']);
+
+        if ($authenticateUser) {
+            return $user;
+        }
+
+        return false;
     }
 }
