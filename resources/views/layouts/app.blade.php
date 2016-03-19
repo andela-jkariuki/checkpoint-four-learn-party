@@ -104,21 +104,21 @@
 
                 @if (Auth::user())
 
-                    <a href="{{ route('create_video') }}" class="btn btn-default">ADD NEW VIDEO</a> | <a href="{{ route('profile') }}" class="btn btn-success">VIEW MY PROFILE</a>
+                    <a href="{{ route('create_video') }}" class="btn btn-default">ADD NEW VIDEO</a> <a href="{{ route('profile') }}" class="btn btn-success">VIEW MY PROFILE</a>
                 @else
 
-                    <a href="/login" class="btn btn-default">LOGIN</a> |  <a href="/register" class="btn btn-success">CREATE NEW ACCOUNT</a>
+                    <a href="/login" class="btn btn-default">LOGIN</a>  <a href="/register" class="btn btn-success">REGISTER</a>
 
                 @endif
 
                 </div>
             </section>
-            <a href="#"><i class="fa fa-chevron-circle-down"></i></a>
+            <a href="#main-content" id="scroll-to-content"><i class="fa fa-chevron-circle-down"></i></a>
         </div>
 
     @endif
 
-    <div class="container-fluid">
+    <div id="main-content" class="container-fluid">
 
         @yield('content')
 
