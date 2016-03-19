@@ -47,7 +47,8 @@
             "php artisan migrate --force"
         ],
         "pre-update-cmd": [
-            "php artisan clear-compiled"
+            "php artisan clear-compiled",
+            "php artisan migrate"
         ],
         "post-update-cmd": [
             "php artisan optimize"

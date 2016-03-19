@@ -92,7 +92,33 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid">
+
+    @if (url()->current() == route('homepage'))
+
+        <div id="landing-page" class="text-center">
+            <section class="landing-page-title">
+                <h1>Welcome to the <strong class="site-highlight">Learn Party</strong></h1>
+                <h2>Get the best learning materials online. <strong class="site-highlight">On Demand. </strong></h2>
+                <hr>
+                <div class="landing-page-call-to-action">
+
+                @if (Auth::user())
+
+                    <a href="{{ route('create_video') }}" class="btn btn-default">ADD NEW VIDEO</a> <a href="{{ route('profile') }}" class="btn btn-success">VIEW MY PROFILE</a>
+                @else
+
+                    <a href="/login" class="btn btn-default">LOGIN</a>  <a href="/register" class="btn btn-success">REGISTER</a>
+
+                @endif
+
+                </div>
+            </section>
+            <a href="#main-content" id="scroll-to-content"><i class="fa fa-chevron-circle-down"></i></a>
+        </div>
+
+    @endif
+
+    <div id="main-content" class="container-fluid">
 
         @yield('content')
 

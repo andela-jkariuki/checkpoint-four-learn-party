@@ -28,6 +28,7 @@
                                             </div>
                                         </div>
                                     </li>
+
                                 @endforeach
 
                             </ul>

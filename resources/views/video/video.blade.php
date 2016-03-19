@@ -24,10 +24,14 @@
                 </ul>
                 <div class="pull-right">
                 @if (Auth::check() && Auth::user()->id == $video->user_id)
+
                     <a href="{{ route('edit_video', ['id' => $video->id]) }}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
                     <a href="{{ route('delete_video', ['id' => $video->id ]) }}" class="btn btn-danger btn-xs delete-video"><i class="fa fa-trash"></i></a>
+
                 @else
+
                     Created by <a href="{{ route('show_user', ['id' => $video->user_id]) }}"> {{ $user->name }}</a> <span class="incognito-text">{{ $video->created_at->diffForHumans() }}</span>
+
                 @endif
                 </div>
             </div>
