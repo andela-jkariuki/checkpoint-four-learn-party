@@ -31,8 +31,12 @@
     },
     "autoload-dev": {
         "classmap": [
-            "tests/TestCase.php"
-        ]
+            "tests/TestCase.php",
+            "tests/PersistTestData.php"
+        ],
+        "psr-4": {
+           "LearnParty\\Tests\\": "tests/"
+       }
     },
     "scripts": {
         "post-root-package-install": [

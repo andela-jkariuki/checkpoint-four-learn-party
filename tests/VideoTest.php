@@ -7,6 +7,7 @@ use LearnParty\Http\Repositories\VideoRepository;
 
 class VideoTest extends TestCase
 {
+    use  LearnParty\Tests\PersistTestData;
     /**
      * VideoRepository getVideo test
      *
@@ -86,14 +87,18 @@ class VideoTest extends TestCase
      *  returns false if logged in and not like a video
      *  returns true if logged in and user has liked a video
      *
-     * @return [type] [description]
+     * @return
      */
     public function testGetLikeStatus()
     {
-        $user = factory('LearnParty\User')->create();
         $video = factory('LearnParty\Video')->create();
 
         $this->assertFalse($this->videoRepository->getLikeStatus($video));
+
+        $this->login();
+        $this->assertFalse($this->videoRepository->getLikeStatus($video));
+
+        $fav = factory('LearnParty\Favorite')->create(['user_id' => 1, 'video_id' => 1]);
     }
 
     /**
@@ -120,8 +125,6 @@ class VideoTest extends TestCase
         $this->assertArrayHasKey('topCommentedOn', $popularVideosData);
         $this->assertArrayHasKey('topUsers', $popularVideosData);
 
-        print_r($popularVideosData['topUsers']->toArray());
-
         $this->assertTrue(in_array(
             $popularVideosData['topViewed'][0]->title,
             array_column($videos->toArray(), 'title')
@@ -141,6 +144,28 @@ class VideoTest extends TestCase
             $popularVideosData['topUsers']->toArray()[0]['username'],
             array_column($users->toArray(), 'username')
         ));
+    }
 
+    /**
+     * Assert that a user can favorite and unfavorite a video
+     *
+     * @return
+     */
+    public function testFavoriteAndUnfavoriteVideo()
+    {
+        $video = factory('LearnParty\Video')->create();
+        $this->login();
+        $fav = $this->videoRepository->favoriteVideo(['user_id' => 1, 'video_id' => 1]);
+
+        $this->assertArrayHasKey('status', $fav);
+        $this->assertArrayHasKey('message', $fav);
+
+        $this->assertEquals(200, $fav['status']);
+        $this->assertEquals('favorited', $fav['message']);
+
+        $unFav = $this->videoRepository->unFavoriteVideo(['user_id' => 1, 'video_id' => 1]);
+
+        $this->assertEquals(200, $unFav['status']);
+        $this->assertEquals('unfavorited', $unFav['message']);
     }
 }
