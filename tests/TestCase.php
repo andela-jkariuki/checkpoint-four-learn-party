@@ -1,7 +1,32 @@
 <?php
 
+use LearnParty\Http\Repositories\VideoRepository;
+
 class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
+    protected $videoRepository;
+
+    /**
+     * Setup the testing environment,
+     * Call the parent Setup and run mirations
+     */
+    public function setUp()
+    {
+        parent::setUp();
+        $this->prepareTestDB();
+
+        $this->videoRepository = new VideoRepository();
+    }
+
+    /**
+     * Prepare test database
+     */
+    public function prepareTestDB()
+    {
+        Config::set('database.default', 'sqlite');
+        Artisan::call('migrate:refresh');
+    }
+
     /**
      * The base URL to use while testing the application.
      *

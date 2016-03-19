@@ -24,7 +24,7 @@ class VideoController extends Controller
      */
     public function show($id)
     {
-        $video = Video::findOrFail($id);
+        $video = $this->videoRepository->getVideo($id);
 
         $user = $video->user;
         $categories = $video->categories;
