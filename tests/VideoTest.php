@@ -206,4 +206,23 @@ class VideoTest extends TestCase
         $this->assertArrayHasKey('title', $rules);
         $this->assertEquals('required|min:5|max:255', $rules['title']);
     }
+
+    public function testShowVideo()
+    {
+
+        $user = factory('LearnParty\User')->create();
+        $video = factory('LearnParty\Video')->create();
+        $x = $this->call(
+            'GET',
+            'videos/' . $video->id,
+            [
+                '_token' => csrf_token()
+            ]
+        );
+        $this->assertViewHasAll(['video', 'categories', 'comments', 'user', 'favorites', 'likesVideo']);
+
+        $this->visit('videos/' . $video->id)
+            ->see($video->title)
+            ->see($user->name);
+    }
 }
