@@ -21,4 +21,18 @@ class UsersTest extends TestCase
              ->visit('/profile')
              ->see($user->name);
     }
+
+    /**
+     * Assert that a user can update their profile
+     *
+     * @return void
+     */
+    public function testUserCanUpdateProfile()
+    {
+        $user = factory('LearnParty\User')->create();
+        $x = $this->actingAs($user)
+             ->visit('/profile')
+             ->type('A swanky new profile update', 'about')
+             ->press('update-profile');
+    }
 }
