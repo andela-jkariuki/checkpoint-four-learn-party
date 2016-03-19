@@ -95,4 +95,52 @@ class VideoTest extends TestCase
 
         $this->assertFalse($this->videoRepository->getLikeStatus($video));
     }
+
+    /**
+     * Assert that getTopPopularVideos returns
+     *
+     * Top viwewed Videos
+     * Top Favorited videos
+     * Top Commented on videos
+     * Users with the must videos
+     *
+     * @return void
+     */
+    public function testGetTopPopularVideos()
+    {
+        $users = factory('LearnParty\User', 20)->create();
+        $videos = factory('LearnParty\Video', 20)->create();
+        $favorites = factory('LearnParty\Favorite', 20)->create();
+        $comments = factory('LearnParty\Comment', 20)->create();
+
+        $popularVideosData = $this->videoRepository->getTopPopularVideos(3);
+
+        $this->assertArrayHasKey('topViewed', $popularVideosData);
+        $this->assertArrayHasKey('topFavorited', $popularVideosData);
+        $this->assertArrayHasKey('topCommentedOn', $popularVideosData);
+        $this->assertArrayHasKey('topUsers', $popularVideosData);
+
+        print_r($popularVideosData['topUsers']->toArray());
+
+        $this->assertTrue(in_array(
+            $popularVideosData['topViewed'][0]->title,
+            array_column($videos->toArray(), 'title')
+        ));
+
+        $this->assertTrue(in_array(
+            array_column($popularVideosData['topFavorited']->toArray(), 'url')[0],
+            array_column($videos->toArray(), 'url')
+        ));
+
+        $this->assertTrue(in_array(
+            array_column($popularVideosData['topCommentedOn']->toArray(), 'description')[0],
+            array_column($videos->toArray(), 'description')
+        ));
+
+        $this->assertTrue(in_array(
+            $popularVideosData['topUsers']->toArray()[0]['username'],
+            array_column($users->toArray(), 'username')
+        ));
+
+    }
 }
