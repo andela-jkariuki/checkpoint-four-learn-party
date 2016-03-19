@@ -53,4 +53,19 @@ class VideoTest extends TestCase
 
         $this->assertEquals($yotubeVideoId, $this->videoRepository->makeYoutubeUrl($yotubeUrl));
     }
+
+    /**
+     * Test that when a user loads a video, they update the view on a video
+     *
+     * @return
+     */
+    public function testUpdateViews()
+    {
+        $video = factory('LearnParty\Video')->create(['views' => 5]);
+
+        $this->assertEquals(5, $video->views);
+        $this->videoRepository->updateViews($video->id);
+
+        $this->assertEquals(6, $this->videoRepository->getVideo($video->id)->views);
+    }
 }
