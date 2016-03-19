@@ -190,4 +190,39 @@ class VideoTest extends TestCase
         $this->assertTrue($this->videoRepository->validVideoEditor($myVideo));
         $this->assertFalse($this->videoRepository->validVideoEditor($otherVideo));
     }
+
+    /**
+     * Test the validation array for Videos
+     *
+     * @return
+     */
+    public function testVideoRequestValidationArray()
+    {
+        $videoRequest = new \LearnParty\Http\Requests\VideoRequest();
+        $rules = $videoRequest->rules();
+
+        $this->assertTrue($videoRequest->authorize());
+        $this->assertTrue(is_array($rules));
+        $this->assertArrayHasKey('title', $rules);
+        $this->assertEquals('required|min:5|max:255', $rules['title']);
+    }
+
+    public function testShowVideo()
+    {
+
+        $user = factory('LearnParty\User')->create();
+        $video = factory('LearnParty\Video')->create();
+        $x = $this->call(
+            'GET',
+            'videos/' . $video->id,
+            [
+                '_token' => csrf_token()
+            ]
+        );
+        $this->assertViewHasAll(['video', 'categories', 'comments', 'user', 'favorites', 'likesVideo']);
+
+        $this->visit('videos/' . $video->id)
+            ->see($video->title)
+            ->see($user->name);
+    }
 }
