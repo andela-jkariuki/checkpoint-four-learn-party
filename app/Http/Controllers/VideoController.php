@@ -7,15 +7,9 @@ use LearnParty\Http\Requests;
 use LearnParty\Video;
 use LearnParty\Comment;
 use LearnParty\User;
-use LearnParty\Http\Repositories\VideoRepository;
 
 class VideoController extends Controller
 {
-    public function __construct(VideoRepository $videoRepository)
-    {
-        $this->videoRepository = $videoRepository;
-    }
-
     /**
      * Show a single video, comments, favorites, views and categories
      *

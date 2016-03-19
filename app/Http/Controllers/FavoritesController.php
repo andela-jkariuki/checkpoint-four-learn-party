@@ -2,7 +2,6 @@
 
 namespace LearnParty\Http\Controllers;
 
-use LearnParty\Http\Repositories\VideoRepository;
 use Illuminate\Http\Request;
 use LearnParty\Http\Requests;
 use LearnParty\Favorite;
@@ -11,16 +10,6 @@ use Auth;
 
 class FavoritesController extends Controller
 {
-    /**
-     * __construct Create VideoRepository instance
-     *
-     * @param VideoRepository $videoRepository VideoRepository
-     */
-    public function __construct(VideoRepository $videoRepository)
-    {
-        $this->videoRepository = $videoRepository;
-    }
-
     /**
      * Add a new favorite if it does not exist and
      * remove it if does exist

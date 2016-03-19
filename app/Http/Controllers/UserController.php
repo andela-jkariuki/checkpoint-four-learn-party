@@ -6,15 +6,9 @@ use Illuminate\Http\Request;
 use LearnParty\Http\Requests;
 use LearnParty\User;
 use Auth;
-use LearnParty\Http\Repositories\UserRepository;
 
 class UserController extends Controller
 {
-    public function __construct(UserRepository $userRepository)
-    {
-        $this->userRepository = $userRepository;
-    }
-
     /**
      * Return the user's profile page.
      *
