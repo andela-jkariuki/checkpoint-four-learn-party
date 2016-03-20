@@ -2,11 +2,30 @@
 
 use LearnParty\Http\Repositories\VideoRepository;
 use LearnParty\Http\Repositories\UserRepository;
+use LearnParty\Http\Controllers\Auth\AuthController;
 
 class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
+    /**
+     * VideoRepository instance.
+     *
+     * @var Object
+     */
     protected $videoRepository;
+
+    /**
+     * UserRepository instance.
+     *
+     * @var Object
+     */
     protected $userRepository;
+
+    /**
+     * AuthController instance.
+     *
+     * @var Object
+     */
+    protected $authController;
 
     /**
      * Setup the testing environment,
@@ -19,6 +38,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         $this->videoRepository = new VideoRepository();
         $this->userRepository = new UserRepository();
+        $this->authController = new AuthController();
     }
 
     /**

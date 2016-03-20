@@ -34,6 +34,7 @@ class AuthController extends Controller
 
     /**
      * Create a new authentication controller instance.
+     * @codeCoverageIgnore
      *
      * @return void
      */
@@ -65,7 +66,7 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
+    public function create(array $data)
     {
         return User::create([
             'name' => $data['name'],
@@ -81,6 +82,8 @@ class AuthController extends Controller
     /**
      * Redirect the user to the authentication service.
      *
+     * @codeCoverageIgnore
+     *
      * @return Response
      */
     public function redirectToProvider($provider)
@@ -90,6 +93,8 @@ class AuthController extends Controller
 
     /**
      * Obtain the user information from authentication service.
+     *
+     * @codeCoverageIgnore
      *
      * @return Response
      */
