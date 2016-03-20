@@ -20,15 +20,9 @@ class CommentController extends Controller
             'comment' => 'required|max:500',
         ]);
         $newComment = Auth::user()->comments()->create($request->all());
-        if ($newComment) {
-            return [
-                'status' => 200,
-                'message' => 'New comment succesfully added.'
-            ];
-        }
         return [
-                'status' => 400,
-                'message' => 'Error adding new comment.'
-            ];
+            'status' => 200,
+            'message' => 'New comment succesfully added.'
+        ];
     }
 }
