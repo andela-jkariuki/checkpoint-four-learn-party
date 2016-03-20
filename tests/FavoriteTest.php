@@ -35,4 +35,40 @@ class FavoriteTest extends TestCase
          $this->assertTrue(is_array($feedback->original));
          $this->assertEquals('unfavorited', $feedback->original['message']);
     }
+
+    /**
+     * Test that a favorite belongs to a User
+     *
+     * @return void
+     */
+    public function testUserFavoriteRelationship()
+    {
+        $user = $this->createAndLoginUser();
+        $video = factory('LearnParty\Video')->create();
+
+        $this->actingAs($user)
+             ->call('POST', 'favorites/update', [
+                'video_id' => $video->id
+             ]);
+
+        $this->assertEquals(LearnParty\Favorite::first()->user->id, $user->id);
+    }
+
+    /**
+     * Test that a favorite belongs to a Video
+     *
+     * @return void
+     */
+    public function testUserVideoRelationship()
+    {
+        $user = $this->createAndLoginUser();
+        $video = factory('LearnParty\Video')->create();
+
+        $this->actingAs($user)
+             ->call('POST', 'favorites/update', [
+                'video_id' => $video->id
+             ]);
+
+        $this->assertEquals(LearnParty\Favorite::first()->video->id, $video->id);
+    }
 }
