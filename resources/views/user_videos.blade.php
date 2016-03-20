@@ -22,7 +22,15 @@
                             </p>
                         </div>
                         <div class="col-md-8">
-
+                            @if (!is_null($headline))
+                                <h4>
+                                    <a href="{{ route('show_video', ['id' => $headline->id]) }}">
+                                        {{ substr($headline->title, 0, 25) }}
+                                        {{ strlen($headline->title) > 25 ? '...': ''}}
+                                    </a>
+                                </h4>
+                                <iframe width="100%" height="325" src="http://www.youtube.com/embed/{{ $videos[0]->url }}" allowfullscreen></iframe>
+                            @endif
                         </div>
                     </div>
                 </div>
