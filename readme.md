@@ -52,6 +52,67 @@ See the most popular videos according to
 
 **You do not have to be logged in to view the videos without engagement (Commenting, Favoriting, uploading and editing)**
 
+##Usage
+
+It is recommended that you have the following set up on your local environment before getting started
+
+1. [Composer](https://getcomposer.org)
+2. [Laravel] (https://laravel.com)
+3. [Vagrant] (https://www.vagrantup.com) 
+4. [Postgres](http://www.postgresql.org)
+5. [Git] (https://git-scm.com)
+
+Clone the repository into your local environment
+
+```bash
+$ git clone git@github.com:andela-jkariuki/checkpoint-four-learn-party.git
+```
+
+Change directory into `checkpoint-four-learn-party`
+
+```bash
+$ cd checkpoint-four-learn-party
+```
+
+Copy the .env file into your project (use the env.example template) and populate it with your environment data
+
+```bash
+$ cp env.example .env
+```
+
+Run Composer install to install the vendor packages
+
+```bash
+$ composer install
+```
+
+Boot up your server and you are ready to go
+
+If you are using vagrant, simply run
+
+```bash
+$ vagrant up
+```
+
+Otherwise, run
+
+```bash
+$ php artisan serve
+```
+
+
+## Tests
+
+if you have phpunit installed globally (recommended), run
+
+```bash
+$ phpunit
+```
+
+Otherwise, run
+```bash
+$ vendor/bin/phpunit
+```
 ## Contributing
 
 Contributions are **welcome** and will be fully **credited**.
