@@ -28,16 +28,16 @@ trait PersistTestData
      *
      * @return Object Uplaoded vIdeo
      */
-    public function createVideoWithCategory()
+    public function createVideoWithCategory($category)
     {
-        $category1 = factory('LearnParty\Category')->create(['name' => 'php']);
+        $category = factory('LearnParty\Category')->create(['name' => $category]);
 
         return $this->visit('dashboard/videos/create')
              ->see('New Video Post')
              ->type('A swanky youtube tutorial title', 'title')
              ->type('https://www.youtube.com/watch?v=pLs4Tex0U1U', 'url')
              ->type('A swanky new description of the video', 'description')
-             ->select($category1->id, 'category_list')
+             ->select($category->id, 'category_list')
              ->press('new-video');
     }
 }
