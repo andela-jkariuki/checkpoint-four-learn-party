@@ -24,6 +24,8 @@ class Inspire extends Command
     /**
      * Execute the console command.
      *
+     * @codeCoverageIgnore
+     *
      * @return mixed
      */
     public function handle()
