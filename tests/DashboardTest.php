@@ -83,4 +83,39 @@ class DashboardTest extends TestCase
 
         $this->dontSeeInDatabase('videos', ['id' =>  1]);
     }
+
+    /**
+     * Test that a user can see the videos they uploaded
+     *
+     * @return void
+     */
+    public function testUserCanSeeUploadedVideos()
+    {
+        $user = $this->createAndLoginUser();
+        $videos = factory('LearnParty\Video', 3)->create(['user_id' => 1]);
+
+        $this->visit('dashboard/videos')
+             ->see($videos[0]['title'])
+             ->see($videos[1]['title'])
+             ->see($videos[2]['title']);
+    }
+
+    /**
+     * Assert that a user can see the videos that they have favorited
+     *
+     * @return void
+     */
+    public function testUserCanSeeFavoritedVideos()
+    {
+        $user = $this->createAndLoginUser();
+        $videos = factory('LearnParty\Video', 3)->create();
+        $favorite = factory('LearnParty\Favorite')->create(['user_id' => 1, 'video_id' => 1]);
+        $favorite = factory('LearnParty\Favorite')->create(['user_id' => 1, 'video_id' => 2]);
+        $favorite = factory('LearnParty\Favorite')->create(['user_id' => 1, 'video_id' => 3]);
+
+        $this->visit('dashboard/videos/favorites')
+             ->see($videos[0]['title'])
+             ->see($videos[1]['title'])
+             ->see($videos[2]['title']);
+    }
 }
