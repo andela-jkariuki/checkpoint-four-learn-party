@@ -85,7 +85,7 @@ class UsersTest extends TestCase
     }
 
     /**
-     * test User repositoriy's updateUserInfo
+     * test User repositoriy's updateUserInfo.
      *
      * @return void
      */
@@ -99,7 +99,7 @@ class UsersTest extends TestCase
     }
 
     /**
-     * Test that a user can have many comments
+     * Test that a user can have many comments.
      *
      * @return void
      */
@@ -111,5 +111,20 @@ class UsersTest extends TestCase
 
         $this->assertEquals($user->id, $user->comments[0]->user_id);
         $this->assertEquals($user->id, $user->comments[1]->user_id);
+    }
+
+    /**
+     * Test that a user can favorite many videos.
+     *
+     * @return void
+     */
+    public function testUserFavoritesRelationship()
+    {
+        $user = $this->createAndLoginUser();
+        $video = factory('LearnParty\Video')->create();
+        $comments = factory('LearnParty\Favorite', 2)->create(['user_id' => 1]);
+
+        $this->assertEquals($user->id, $user->favorites[0]->user_id);
+        $this->assertEquals($user->id, $user->favorites[1]->user_id);
     }
 }
