@@ -1,7 +1,7 @@
 # Welcome to the Learn Party
 
 
-[![Build Status](https://travis-ci.org/andela-jkariuki/checkpoint-four-learn-party.svg?branch=master)](https://travis-ci.org/andela-jkariuki/checkpoint-four-learn-party)
+[![Build Status](https://scrutinizer-ci.com/g/andela-jkariuki/checkpoint-four-learn-party/badges/build.png?b=staging)](https://scrutinizer-ci.com/g/andela-jkariuki/checkpoint-four-learn-party/build-status/staging)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andela-jkariuki/checkpoint-four-learn-party/badges/quality-score.png?b=staging)](https://scrutinizer-ci.com/g/andela-jkariuki/checkpoint-four-learn-party/?branch=staging)
 [![Coverage Status](https://coveralls.io/repos/github/andela-jkariuki/checkpoint-four-learn-party/badge.svg?branch=staging)](https://coveralls.io/github/andela-jkariuki/checkpoint-four-learn-party?branch=staging)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
@@ -78,6 +78,59 @@ Copy the .env file into your project (use the env.example template) and populate
 
 ```bash
 $ cp env.example .env
+```
+
+You can also follow the template for your .env
+```bash
+APP_ENV=local
+APP_DEBUG=true
+APP_KEY=
+APP_URL=
+
+DB_HOST=
+DB_PORT=5432
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+
+CACHE_DRIVER=
+SESSION_DRIVER=
+QUEUE_DRIVER=
+
+REDIS_HOST=
+REDIS_PASSWORD=
+REDIS_PORT=
+
+MAIL_DRIVER=
+MAIL_HOST=
+MAIL_PORT=
+MAIL_USERNAME=
+MAIL_PASSWORD=
+MAIL_ENCRYPTION=
+
+GITHUB_APP_ID=
+GITHUB_APP_SECRET=
+GITHUB_CALLBACK_URL=
+
+FACEBOOK_APP_ID=
+FACEBOOK_APP_SECRET=
+FACEBOOK_CALLBACK_URL=
+
+TWITTER_APP_ID=
+TWITTER_APP_SECRET=
+TWITTER_CALLBACK_URL=
+
+AWS_KEY=
+AWS_SECRET=
+AWS_REGION=
+AWS_BUCKET=
+
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_BASE_URL=
+CLOUDINARY_SECURE_URL=
+CLOUDINARY_API_BASE_URL=
 ```
 
 Run Composer install to install the vendor packages
