@@ -127,4 +127,22 @@ class UsersTest extends TestCase
         $this->assertEquals($user->id, $user->favorites[0]->user_id);
         $this->assertEquals($user->id, $user->favorites[1]->user_id);
     }
+
+    /**
+     * Test create method,
+     * Normal users can create an account
+     *
+     * @return void
+     */
+    public function testAuthCreate()
+    {
+        $this->authController->create([
+            'name' => 'name',
+            'username' => 'username',
+            'password' => 'password',
+            'email' => 'test@email.com'
+        ]);
+
+        $this->seeInDatabase('users', ['name' => 'name', 'email' => 'test@email.com', 'provider' => 'traditional']);
+    }
 }
