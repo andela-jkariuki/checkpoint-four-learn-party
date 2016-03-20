@@ -22,7 +22,7 @@
                             </p>
                         </div>
                         <div class="col-md-8">
-                            @if (!$headline->get()->isEmpty())
+                            @if ($headline)
                                 <h4>
                                     <a href="{{ route('show_video', ['id' => $headline->id]) }}">
                                         {{ substr($headline->title, 0, 25) }}
@@ -39,28 +39,13 @@
             <hr>
             <div id="video-library">
 
-            @if($videos->count() > 0)
 
-                @foreach($videos->chunk(3) as $chunk)
-
-                    <div class="row">
-                    @foreach($chunk as $video)
-
-                        @include ('layouts..video.video_card')
-
-                    @endforeach
-
-                    </div>
-                @endforeach
-
-                {!! $videos->links() !!}
-            @else
 
                 <div class="well well-lg">
                     <i class="fa fa-info-circle"></i> There are no videos to display. Please check again later.
                 </div>
 
-            @endif
+
             </div>
         </div>
     </div>
