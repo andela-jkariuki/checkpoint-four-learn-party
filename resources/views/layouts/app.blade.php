@@ -68,7 +68,7 @@
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
                         <li id="user-avatar">
-                            <a href="/dashboard"><img src="{{ Auth::user()->avatar }}" class="img-circle"></img></a>
+                            <a href="{{ route('profile') }}"><img src="{{ Auth::user()->avatar }}" class="img-circle"></img></a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
