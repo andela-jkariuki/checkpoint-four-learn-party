@@ -22,7 +22,7 @@
                             </p>
                         </div>
                         <div class="col-md-8">
-                            @if ($headline)
+                            @if (!$headline->get()->isEmpty())
                                 <h4>
                                     <a href="{{ route('show_video', ['id' => $headline->id]) }}">
                                         {{ substr($headline->title, 0, 25) }}
