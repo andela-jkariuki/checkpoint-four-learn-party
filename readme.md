@@ -11,14 +11,17 @@
 ## What can I do on Learn Party
 
 **1. Register account**
+
 Create an account using your email, facebook, twitter or github account in under a minute.
 
 Proceed to login here
 
 **2. User profile**
+
 Update your profile details, avatar or simply put up a small bio about yourself that your video fans can read about. 
 
 **3. Video Resources**
+
 Having fun yet?
 
 Create new videos on your profile, edit exisiting details or delete your uploaded videos entirely.
