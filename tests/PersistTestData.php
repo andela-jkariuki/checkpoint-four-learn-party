@@ -17,4 +17,17 @@ trait PersistTestData
 
         return false;
     }
+
+    public function createVideoWithCategory()
+    {
+        $category1 = factory('LearnParty\Category')->create(['name' => 'php']);
+
+        return $this->visit('dashboard/videos/create')
+             ->see('New Video Post')
+             ->type('A swanky youtube tutorial title', 'title')
+             ->type('https://www.youtube.com/watch?v=pLs4Tex0U1U', 'url')
+             ->type('A swanky new description of the video', 'description')
+             ->select($category1->id, 'category_list')
+             ->press('new-video');
+    }
 }
