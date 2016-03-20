@@ -6,6 +6,11 @@ use Auth;
 
 trait PersistTestData
 {
+    /**
+     * Register and authneticate a user
+     *
+     * @return boolean false or object
+     */
     public function createAndLoginUser()
     {
         $user = factory('LearnParty\User')->create(['email' => 'test@Learnparty.com']);
@@ -18,6 +23,11 @@ trait PersistTestData
         return false;
     }
 
+    /**
+     * add a video with a category
+     *
+     * @return Object Uplaoded vIdeo
+     */
     public function createVideoWithCategory()
     {
         $category1 = factory('LearnParty\Category')->create(['name' => 'php']);
