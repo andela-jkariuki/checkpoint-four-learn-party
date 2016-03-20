@@ -63,6 +63,8 @@ class AuthController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
+     * @codeCoverageIgnore
+     *
      * @param  array  $data
      * @return User
      */

@@ -145,4 +145,17 @@ class UsersTest extends TestCase
 
         $this->seeInDatabase('users', ['name' => 'name', 'email' => 'test@email.com', 'provider' => 'traditional']);
     }
+
+    /**
+     * Test that a user can upload an avatar
+     *
+     * @return void
+     */
+    public function testAvatarUpload()
+    {
+        $user = $this->createAndLoginUser();
+        $this->visit('profile')
+            ->press('Upload avatar')
+            ->seePageIs('profile');
+    }
 }
