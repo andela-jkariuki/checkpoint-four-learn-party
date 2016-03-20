@@ -112,7 +112,7 @@
                         newComment += '<div class="media-body">';
                         newComment += '<div class="well">';
                         newComment += '<h4 class="media-heading">{{ Auth::user()->name }}</h4>';
-                        newComment += '<h6 class="pull-right">1 seecond ago </h6>';
+                        newComment += '<h6 class="pull-right">1 second ago </h6>';
                         newComment += '<p class="media-comment">' + comment + '</p>';
                         newComment += '</div>';
                         newComment += '</div>';
