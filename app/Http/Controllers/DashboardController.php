@@ -2,7 +2,6 @@
 
 namespace LearnParty\Http\Controllers;
 
-use LearnParty\Http\Repositories\VideoRepository;
 use Illuminate\Http\Request;
 use LearnParty\Http\Requests;
 use LearnParty\Http\Requests\VideoRequest;
@@ -12,11 +11,6 @@ use Auth;
 
 class DashboardController extends Controller
 {
-    public function __construct(VideoRepository $videoRepository)
-    {
-        $this->videoRepository = $videoRepository;
-    }
-
     /**
      * Return view to create new Video post
      *

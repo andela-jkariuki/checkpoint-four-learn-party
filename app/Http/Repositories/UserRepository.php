@@ -12,7 +12,7 @@ class UserRepository
 {
     /**
      * If a user has registered before using social auth, return a user object
-     * else, create a new user record
+     * else, create a new user record.
      *
      * @param  array  $user     Socialite user object
      * @param  string $provider Social auth provider service
@@ -56,7 +56,7 @@ class UserRepository
     }
 
     /**
-     * Update user info
+     * Update user info.
      *
      * @param  array  $data Data to update
      * @return boolean       True or false

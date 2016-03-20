@@ -95,7 +95,7 @@ class VideoTest extends TestCase
 
         $this->assertFalse($this->videoRepository->getLikeStatus($video));
 
-        $this->login();
+        $this->createAndLoginUser();
         $this->assertFalse($this->videoRepository->getLikeStatus($video));
 
         $fav = factory('LearnParty\Favorite')->create(['user_id' => 1, 'video_id' => 1]);
@@ -158,7 +158,7 @@ class VideoTest extends TestCase
     public function testFavoriteAndUnfavoriteVideo()
     {
         $video = factory('LearnParty\Video')->create();
-        $this->login();
+        $this->createAndLoginUser();
         $fav = $this->videoRepository->favoriteVideo(['user_id' => 1, 'video_id' => 1]);
 
         $this->assertArrayHasKey('status', $fav);
@@ -186,7 +186,7 @@ class VideoTest extends TestCase
         $myVideo = factory('LearnParty\Video')->create();
         $otherVideo = factory('LearnParty\Video')->create(['user_id' => 2]);
 
-        $this->login();
+        $this->createAndLoginUser();
         $this->assertTrue($this->videoRepository->validVideoEditor($myVideo));
         $this->assertFalse($this->videoRepository->validVideoEditor($otherVideo));
     }

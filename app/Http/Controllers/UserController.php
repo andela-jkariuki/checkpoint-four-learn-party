@@ -6,17 +6,11 @@ use Illuminate\Http\Request;
 use LearnParty\Http\Requests;
 use LearnParty\User;
 use Auth;
-use LearnParty\Http\Repositories\UserRepository;
 
 class UserController extends Controller
 {
-    public function __construct(UserRepository $userRepository)
-    {
-        $this->userRepository = $userRepository;
-    }
-
     /**
-     * Return the user's profile page
+     * Return the user's profile page.
      *
      * @return view
      */
@@ -26,7 +20,7 @@ class UserController extends Controller
     }
 
     /**
-     * update the user's record
+     * update the user's record.
      *
      * @param  Request $request User request
      * @return
@@ -40,8 +34,7 @@ class UserController extends Controller
             'about' => 'required|min:5',
         ]);
 
-        User::find(Auth::user()->id)
-            ->update($request->all());
+        $this->userRepository->updateUserInfo($request->all());
 
         $request->session()->flash('status', 'success');
         $request->session()->flash('message', 'Profile successfully updated.');
@@ -50,7 +43,7 @@ class UserController extends Controller
     }
 
     /**
-     * upload an avatar to cloudinary and return url
+     * upload an avatar to cloudinary and return url.
      *
      * @param  Request $request Request from user
      * @return Object           redirect to profile page
@@ -81,7 +74,7 @@ class UserController extends Controller
     }
 
     /**
-     * Get all videos that belong to a user
+     * Get all videos that belong to a user.
      *
      * @param  Intger $user the user id
      * @return Video
@@ -90,7 +83,7 @@ class UserController extends Controller
     {
         $user = User::find($user);
         $videos = $user->videos()->paginate(7);
-        $headline = $videos->shift();
+        $headline = $user->videos()->first();
 
         return view('user_videos', compact('user', 'videos', 'headline'));
     }

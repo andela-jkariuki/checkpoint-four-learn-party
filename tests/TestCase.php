@@ -1,10 +1,12 @@
 <?php
 
 use LearnParty\Http\Repositories\VideoRepository;
+use LearnParty\Http\Repositories\UserRepository;
 
 class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
     protected $videoRepository;
+    protected $userRepository;
 
     /**
      * Setup the testing environment,
@@ -16,6 +18,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
         $this->prepareTestDB();
 
         $this->videoRepository = new VideoRepository();
+        $this->userRepository = new UserRepository();
     }
 
     /**

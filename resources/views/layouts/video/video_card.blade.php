@@ -7,8 +7,8 @@
                             <div class="title">
                                 <h4>
                                     <a href="{{ route('show_video', ['id' => $video->id]) }}">
-                                    {{ substr($video->title, 0, 25) }}
-                                    {{ strlen($video->title) > 25 ? '...': ''}}
+                                    {{ substr($video->title, 0, 30) }}
+                                    {{ strlen($video->title) > 30 ? '...': ''}}
                                     </a>
                                 </h4>
                             </div>
