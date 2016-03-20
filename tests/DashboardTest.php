@@ -11,7 +11,7 @@ class DashboardTest extends TestCase
 
     /**
      * Assert that an authenticated user can see the create video page
-     * and create it
+     * and create it.
      *
      * @return void
      */
@@ -38,6 +38,31 @@ class DashboardTest extends TestCase
         $this->seeinDatabase('videos', [
             'title' => 'A swanky youtube tutorial title',
             'url' => 'pLs4Tex0U1U'
+        ]);
+    }
+
+    /**
+     * Assert that a user can see the edit page of a video they own and update
+     * it.
+     *
+     * @return [type] [description]
+     */
+    public function testUserCanEditVideo()
+    {
+        $this->createAndLoginUser();
+        $categories = factory('LearnParty\Category', 3)->create();
+        $video = factory('LearnParty\Video')->create(['user_id' => 1]);
+
+        $this->visit('dashboard/videos/' . $video->id .'/edit')
+             ->see($video->name)
+             ->type('swanky new video description of awesome video', 'description')
+             ->select($categories[0]['id'], 'category_list')
+             ->select($categories[1]['id'], 'category_list')
+             ->press('edit-video');
+
+        $this->seeinDatabase('videos', [
+            'title' => $video->title,
+            'description' => 'swanky new video description of awesome video'
         ]);
     }
 }
