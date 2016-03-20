@@ -35,7 +35,7 @@ class DashboardController extends Controller
         $request['url'] = $this->videoRepository->makeYoutubeUrl($request->all()['url']);
 
         $newVideo = Auth::user()->videos()->create($request->all());
-        $this->syncCategories($newVideo, $request->input('category_list'));
+        $newVideo->categories()->sync($request->input('category_list'));
 
         return redirect('videos/' . $newVideo->id);
     }
@@ -77,7 +77,7 @@ class DashboardController extends Controller
 
         $request['url'] = $this->videoRepository->makeYoutubeUrl($request->all()['url']);
         $video->update($request->all());
-        $this->syncCategories($video, $request->input('category_list'));
+        $video->categories()->sync($request->input('category_list'));
 
         $request->session()->flash('status', 'success');
         $request->session()->flash('message', 'Video successfully updated.');
@@ -104,19 +104,6 @@ class DashboardController extends Controller
         return [
             'message' => 'redirect'
         ];
-    }
-
-    /**
-     * Add link between video and category in
-     * pivot table
-     *
-     * @param  Object $video Video object
-     * @param  array $tags   Associated tag Ids
-     * @return void
-     */
-    private function syncCategories($video, $tags)
-    {
-        $video->categories()->sync($tags);
     }
 
     /**

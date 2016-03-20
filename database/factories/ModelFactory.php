@@ -27,7 +27,7 @@ $factory->define(LearnParty\User::class, function (Faker\Generator $faker) {
 
 $factory->define(LearnParty\Category::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
+        'name' => $faker->word,
     ];
 });
 

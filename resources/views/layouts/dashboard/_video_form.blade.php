@@ -41,7 +41,7 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-danger">
+                <button type="submit" class="btn btn-danger" id="{{$submitButtonId}}">
                     <i class="fa fa-btn fa-youtube-play"></i> {{ $submitButtonText}}
                 </button>
             </div>
