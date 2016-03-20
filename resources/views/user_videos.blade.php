@@ -15,14 +15,14 @@
                     <div id="user-profile">
                         <div class="col-md-4">
                             <h4>About <a href="{{ route('show_user', ['id' => $user->id]) }}"> {{ $user->name }}</a></h4>
-                            <img src="{{ $user->avatar }}" style="width:100%;height:250px;border-radius: 5px;">
+                            <img src="{{ $user->avatar }}" style="height:250px;border-radius: 5px;">
                             <p>
                                 {{ substr($user->about, 0, 100) }}
                                 {{ strlen($user->about) > 100 ? '...': ''}}
                             </p>
                         </div>
                         <div class="col-md-8">
-                            @if ($headline)
+                            @if (!is_null($headline))
                                 <h4>
                                     <a href="{{ route('show_video', ['id' => $headline->id]) }}">
                                         {{ substr($headline->title, 0, 25) }}

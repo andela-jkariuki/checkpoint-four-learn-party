@@ -41,6 +41,6 @@ $(document).ready(function ()
 
           $('html,body').animate({
               scrollTop: $('#main-content').offset().top -10
-          }, 2000);
+          }, 1000);
     });
 });

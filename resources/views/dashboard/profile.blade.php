@@ -61,7 +61,7 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">
+                <button id="update-profile" type="submit" class="btn btn-primary">
                     <i class="fa fa-btn fa-user"></i> Update Profile
                 </button>
             </div>

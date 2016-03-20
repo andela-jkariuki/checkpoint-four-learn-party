@@ -6,7 +6,6 @@ use Validator;
 use LearnParty\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use LearnParty\Http\Repositories\UserRepository;
 use LearnParty\User;
 use Socialite;
 use Auth;
@@ -33,17 +32,15 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/';
 
-    protected $userRepository;
-
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct(UserRepository $userRepository)
+    public function __construct()
     {
+        parent::__construct();
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
-        $this->userRepository = $userRepository;
     }
 
     /**
