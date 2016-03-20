@@ -83,7 +83,7 @@ class UserController extends Controller
     {
         $user = User::find($user);
         $videos = $user->videos()->paginate(7);
-        $headline = $videos->shift();
+        $headline = $user->videos()->first();
 
         return view('user_videos', compact('user', 'videos', 'headline'));
     }
