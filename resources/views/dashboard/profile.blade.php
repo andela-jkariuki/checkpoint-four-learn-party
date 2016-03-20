@@ -79,18 +79,28 @@
         !!}
 
          <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
+
             {!! Form::file('avatar', [
                     'id' => 'avatar',
                     'style' => 'display:none',
                     'data-url' => '/profile/edit/avatar'
                 ])
             !!}
-            @if ($errors->has('avatar'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('avatar') }}</strong>
-                </span>
-            @endif
+
+                {!!
+                    Form::submit('Upload avatar', [
+                        'style' => 'display:none'
+                    ]);
+                !!}
+
+                @if ($errors->has('avatar'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('avatar') }}</strong>
+                    </span>
+                @endif
+
         </div>
+
         {!! Form::close() !!}
         <a href="#" id="uploadAvatar" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Upload Avatar</a>
     </div>
