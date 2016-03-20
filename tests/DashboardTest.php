@@ -65,4 +65,22 @@ class DashboardTest extends TestCase
             'description' => 'swanky new video description of awesome video'
         ]);
     }
+
+    /**
+     * Assert that a user can delete a video they created.
+     *
+     * @return void
+     */
+    public function testUsercanDeleteVideo()
+    {
+        $user = $this->createAndLoginUser();
+        $video = factory('LearnParty\Video')->create(['user_id' => 1]);
+        $this->actingAs($user)
+             ->call(
+                 'DELETE',
+                 'dashboard/videos/' . $video->id
+             );
+
+        $this->dontSeeInDatabase('videos', ['id' =>  1]);
+    }
 }
