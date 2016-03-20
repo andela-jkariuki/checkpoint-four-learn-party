@@ -52,7 +52,7 @@
                     <i class="fa fa-info-circle"></i> There are no videos to display. Please check again later.
                 </div>
 
-
+            @endif
             </div>
         </div>
     </div>
