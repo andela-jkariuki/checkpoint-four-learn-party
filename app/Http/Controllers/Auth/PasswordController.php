@@ -23,6 +23,8 @@ class PasswordController extends Controller
     /**
      * Create a new password controller instance.
      *
+     * @codeCoverageIgnore
+     *
      * @return void
      */
     public function __construct()

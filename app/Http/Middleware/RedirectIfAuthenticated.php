@@ -10,6 +10,8 @@ class RedirectIfAuthenticated
     /**
      * Handle an incoming request.
      *
+     * @codeCoverageIgnore
+     *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
      * @param  string|null  $guard
