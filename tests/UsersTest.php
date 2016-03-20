@@ -97,4 +97,19 @@ class UsersTest extends TestCase
         $this->assertTrue($updateUser);
         $this->seeInDatabase('users', ['about' => 'A swanky new bio about me']);
     }
+
+    /**
+     * Test that a user can have many comments
+     *
+     * @return void
+     */
+    public function testUserCommentsRelationship()
+    {
+        $user = $this->createAndLoginUser();
+        $video = factory('LearnParty\Video')->create();
+        $comments = factory('LearnParty\Comment', 2)->create(['user_id' => 1]);
+
+        $this->assertEquals($user->id, $user->comments[0]->user_id);
+        $this->assertEquals($user->id, $user->comments[1]->user_id);
+    }
 }
