@@ -124,7 +124,8 @@
 
     </div>
     <div id="footer">
-        <strong>Made with <i class="fa fa-heart"></i></strong>
+        <strong>Made with <i class="fa fa-heart"></i>
+        <span class="incognito-text">By</span> <a href="https://github.com/andela-jkariuki" target="_blank">JK</a></strong>
         <span class="pull-right">
             <strong> #TIA {{ \Carbon\Carbon::now()->year }}</strong>
         </span>
