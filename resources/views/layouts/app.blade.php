@@ -82,7 +82,7 @@
                                     </a>
                                 </li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="{{ route('create_video') }}"><i class="fa fa-btn fa-dashboard"></i> Dashboard</a></li>
+                                <li><a href="{{ route('video_uploads') }}"><i class="fa fa-btn fa-dashboard"></i> Dashboard</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-power-off"></i> Logout</a></li>
                             </ul>
