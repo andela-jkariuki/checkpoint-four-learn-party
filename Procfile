@@ -1,1 +1,1 @@
-web: vendor/bin/heroku-php-apache2 public/ -I hhvm_custom.ini
+web: vendor/bin/heroku-php-apache2 public/ -I public/hhvm_custom.ini
