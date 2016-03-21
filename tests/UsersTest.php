@@ -157,6 +157,6 @@ class UsersTest extends TestCase
         $this->visit('profile')
              ->attach(storage_path('cup.jpg'), 'avatar')
              ->press('Upload avatar')
-             ->seePageIs('profile');
+             ->see('Avatar successfully updated.');
     }
 }
