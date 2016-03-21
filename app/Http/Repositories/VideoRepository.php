@@ -53,7 +53,7 @@ class VideoRepository
      */
     public function makeYoutubeUrl($url)
     {
-        return substr(parse_url($url)['query'], 2);
+        return substr(parse_url($url)['query'], 2, 11);
     }
 
     /**
