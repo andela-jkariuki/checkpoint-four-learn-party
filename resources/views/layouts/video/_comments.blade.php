@@ -135,6 +135,7 @@
 
             $('#favorite_video').on('click', function (event) {
                 event.preventDefault();
+                $('#favorite_video').tooltip('destroy');
 
                     $('.fa-heart')
                     .removeClass('fa-heart')
@@ -158,7 +159,7 @@
 
                             favoritesCount = $('.favorites-count');
                             favoritesCount.text(Number(favoritesCount.text()) + 1);
-                        } else{
+                        } else if (response.message === 'unfavorited') {
                             $('.fa-cog')
                             .removeClass('fa-cog')
                             .removeClass('fa-spin')
@@ -166,6 +167,13 @@
 
                             favoritesCount = $('.favorites-count');
                             favoritesCount.text(Number(favoritesCount.text()) - 1);
+                        } else {
+                            $('.fa-cog')
+                            .removeClass('fa-cog')
+                            .removeClass('fa-spin')
+                            .addClass('fa-heart');
+
+                            $('#favorite_video').tooltip('show');
                         }
                     });
             });

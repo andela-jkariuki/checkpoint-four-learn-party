@@ -99,13 +99,20 @@ class VideoRepository
      */
     public function unfavoriteVideo($request)
     {
-        Favorite::where('user_id', Auth::user()->id)
+        $favorited = Favorite::where('user_id', Auth::user()->id)
               ->where('video_id', $request['video_id'])
               ->delete();
 
+        if ($favorited) {
+            return [
+                'status' => 200,
+                'message' => 'unfavorited'
+            ];
+        }
+
         return [
-            'status' => 200,
-            'message' => 'unfavorited'
+            'status' => 400,
+            'message' => 'error. Something went wrong. Please try again'
         ];
     }
 
