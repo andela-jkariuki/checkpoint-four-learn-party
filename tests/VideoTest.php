@@ -187,8 +187,8 @@ class VideoTest extends TestCase
         $otherVideo = factory('LearnParty\Video')->create(['user_id' => 2]);
 
         $this->createAndLoginUser();
-        $this->assertTrue($this->videoRepository->validVideoEditor($myVideo));
-        $this->assertFalse($this->videoRepository->validVideoEditor($otherVideo));
+        $this->assertTrue($this->videoRepository->authorized($myVideo));
+        $this->assertFalse($this->videoRepository->authorized($otherVideo));
     }
 
     /**

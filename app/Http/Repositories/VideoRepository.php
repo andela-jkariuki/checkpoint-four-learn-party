@@ -116,7 +116,7 @@ class VideoRepository
      * @param  Object $video Video collection
      * @return boolean        true if valid, otherwise false
      */
-    public function validVideoEditor($video)
+    public function authorized($video)
     {
         if (Auth::user()->id == $video->user_id) {
             return true;

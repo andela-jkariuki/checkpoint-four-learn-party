@@ -50,7 +50,7 @@ class DashboardController extends Controller
     {
         $video = Video::findOrFail($id);
 
-        if (!$this->videoRepository->validVideoEditor($video)) {
+        if (!$this->videoRepository->authorized($video)) {
             return redirect()->route('homepage');
         }
 
@@ -71,7 +71,7 @@ class DashboardController extends Controller
     {
         $video = Video::findOrFail($id);
 
-        if (!$this->videoRepository->validVideoEditor($video)) {
+        if (!$this->videoRepository->authorized($video)) {
             return redirect()->route('homepage');
         }
 
@@ -93,7 +93,7 @@ class DashboardController extends Controller
      */
     public function delete(Request $request, $id)
     {
-        if ($this->videoRepository->validVideoEditor(Video::findOrFail($id)) && Video::destroy($id)) {
+        if ($this->videoRepository->authorized(Video::findOrFail($id)) && Video::destroy($id)) {
             $request->session()->flash('status', 'success');
             $request->session()->flash('message', 'Video successfully deleted.');
         } else {
