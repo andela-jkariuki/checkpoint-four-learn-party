@@ -20,7 +20,7 @@
                 ], 'class' => 'form'
             ])
          !!}
-            @include('layouts.dashboard._video_form', ['submitButtonText' => 'Updated Video Post', 'submitButtonId' => 'edit-video'])
+            @include('layouts.dashboard._video_form', ['submitButtonText' => 'Update Video Post', 'submitButtonId' => 'edit-video'])
         {!! Form::close() !!}
     </div>
 </div>

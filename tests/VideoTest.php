@@ -212,7 +212,7 @@ class VideoTest extends TestCase
 
         $user = factory('LearnParty\User')->create();
         $video = factory('LearnParty\Video')->create();
-        $x = $this->call(
+        $this->call(
             'GET',
             'videos/' . $video->id,
             [
