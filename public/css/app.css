@@ -106,12 +106,12 @@ body {
 
 section.video {
   border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border: 1px solid #e4e4e4; }
+  border-bottom-left-radius: 10px; }
 
 section.video .title {
   margin-top: -7.5px;
   padding: 5px;
+  min-height: 75px;
   background: #ecf0f1; }
 
 section.video p {
@@ -177,5 +177,9 @@ h1 {
 
 .site-highlight {
   color: #18bc9c; }
+
+#video-library > div.row {
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e4e4e4; }
 
 /*# sourceMappingURL=app.css.map */
