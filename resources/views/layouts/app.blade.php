@@ -93,7 +93,7 @@
         </div>
     </nav>
 
-    @if (url()->current() == route('homepage'))
+    @if (url()->full() == route('homepage'))
 
         <div id="landing-page" class="text-center">
             <section class="landing-page-title">
