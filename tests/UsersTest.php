@@ -155,7 +155,8 @@ class UsersTest extends TestCase
     {
         $user = $this->createAndLoginUser();
         $this->visit('profile')
-            ->press('Upload avatar')
-            ->seePageIs('profile');
+             ->attach(storage_path('cup.jpg'), 'avatar')
+             ->press('Upload avatar')
+             ->seePageIs('profile');
     }
 }
