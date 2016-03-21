@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-3 card">
+    <div class="col-md-3">
 
         @include('layouts.dashboard._user_side_nav')
 

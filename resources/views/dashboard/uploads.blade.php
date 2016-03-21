@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-3 card">
+    <div class="col-md-3">
 
         @include('layouts.dashboard._user_side_nav')
 
@@ -24,7 +24,7 @@
                         <a href="{{ route('show_video', ['id' => $video->id]) }}">
                             <img class="video-iframe" src="http://img.youtube.com/vi/{{ $video->url }}/0.jpg" allowfullscreen="">
                         </a>
-                        <span class="pull-right">
+                        <span class="pull-right dashboard-float">
                             <a id="favorite_video" class="favorite_video" href="#" data-video-url="{{ $video->id }}">
                                 <a href="{{ route('edit_video', ['id' => $video->id]) }}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
                                 <a href="{{ route('delete_video', ['id' => $video->id ]) }}" class="btn btn-danger btn-xs delete-video"><i class="fa fa-trash"></i></a>
@@ -34,8 +34,8 @@
                             <div class="title">
                                 <h4>
                                     <a href="{{ route('show_video', ['id' => $video->id]) }}">
-                                    {{ substr($video->title, 0, 25) }}
-                                    {{ strlen($video->title) > 25 ? '...': ''}}
+                                    {{ substr($video->title, 0, 50) }}
+                                    {{ strlen($video->title) > 50 ? '...': ''}}
                                     </a>
                                 </h4>
                             </div>
