@@ -51,7 +51,7 @@ class UserController extends Controller
     public function updateAvatar(Request $request)
     {
         $this->validate($request, [
-            'avatar' => 'required|image',
+            'avatar' => 'required|image|max:10240',
         ]);
 
         if ($request->file('avatar')->isValid()) {
