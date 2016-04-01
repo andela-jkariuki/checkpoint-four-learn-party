@@ -190,7 +190,7 @@ We accept contributions via Pull Requests on [Github](https://github.com/andela-
 
 ## Security
 
-If you discover any security related issues, please email [John Kariuki](john.kariuki@andela.com) or create an issue.
+If you discover any security related issues, please email me at [John Kariuki](john.kariuki@andela.com) or create an issue.
 
 ## Credits
 
