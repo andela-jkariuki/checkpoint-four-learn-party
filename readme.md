@@ -18,25 +18,22 @@ Proceed to login here
 
 **2. User profile**
 
-Update your profile details, avatar or simply put up a small bio about yourself that your video fans can read about. 
+Update your profile details, avatar or simply put up a small bio about yourself that your video viewers can read about. 
 
 **3. Video Resources**
 
-Having fun yet?
+1. Create new videos on your profile, edit exisiting details or delete your uploaded videos entirely.
 
-Create new videos on your profile, edit exisiting details or delete your uploaded videos entirely.
-
-Keep track of all the videos you have uploaded straight from your dashboard.
+2. Keep track of all the videos you have uploaded straight from your dashboard.
 
 **4. Favorite, Comment, Engage**
 
-Like what you see?
 
-Engage other learners on the comment section of the videos that capture your attention.
+1. Engage other learners on the comment section of the videos that capture your attention.
 
 Too many videos?
 
-Favorite the videos you like and revisit them later on your profile.
+2. Favorite the videos you like and revisit them later on your profile.
 
 **5. Trendy Videos**
 
