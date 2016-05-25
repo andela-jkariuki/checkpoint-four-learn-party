@@ -5,6 +5,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andela-jkariuki/checkpoint-four-learn-party/badges/quality-score.png?b=staging)](https://scrutinizer-ci.com/g/andela-jkariuki/checkpoint-four-learn-party/?branch=staging)
 [![Coverage Status](https://coveralls.io/repos/github/andela-jkariuki/checkpoint-four-learn-party/badge.svg?branch=staging)](https://coveralls.io/github/andela-jkariuki/checkpoint-four-learn-party?branch=staging)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/41a18426f8bc43b99179b04c6058348a)](https://www.codacy.com/app/john-kariuki/checkpoint-four-learn-party?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=andela-jkariuki/checkpoint-four-learn-party&amp;utm_campaign=Badge_Grade)
 
 **Learn Party** is a learning platform that offers user generated content for studying the latest technologies online (Youtube hosted videos).
 
