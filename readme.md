@@ -192,7 +192,7 @@ If you discover any security related issues, please email me at [John Kariuki](j
 
 ## Credits
 
-[John kariuki](https://github.com/andela-jkariuki)
+[John kariuki](https://github.com/johnkariuki)
 
 ## License
 
